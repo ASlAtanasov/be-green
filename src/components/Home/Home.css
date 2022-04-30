@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    margin: 0;
+}
+
+#site-content {
+    max-width: 1500px;
+    margin: 40px auto;
+}
+
+.main {
+    width: 100%;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    width: 30%;
+
+}
+
+.home-card {
+    width: 30%;
+
+}
+
+.home-card-body {
+    white-space: nowrap;
+    overflow: hidden;
+}
+.home-card-title {
+    text-indent: 20px;
+}
+
+.home-card-cardbody-cardtext {
+    height: 210px;
+    white-space: pre-wrap;
+    overflow: overlay;
+    text-overflow: ellipsis;
+}
+
+.home-card-cardbody-cardtext p {
+    text-indent: 20px;
+    text-align: justify;
+    padding-right: 20px;
+}
+
+.home-card-button {
+    background-color: rgb(68, 192, 68);
+    border: 1px solid rgb(68, 192, 68);
+}
+
+.home-card-button:hover {
+    background-color: rgba(165, 42, 42, 0.863);
+}
+
+article.home-card-cardbody-cardtext {
+    margin-bottom: 15px;
+}
+
+.home-card-button-link {
+    color: white;
+    text-decoration: none;
+
+}
+
+.home-card-button-link:hover {
+    color: white;
+    text-decoration: none;
+
+}

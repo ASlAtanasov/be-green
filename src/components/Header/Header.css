@@ -1,0 +1,34 @@
+.navigation {
+    background-color: rgb(68, 192, 68);
+    padding: 0 40px;
+}
+
+.navigation-container {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.navigation-container-span-a {
+    color: rgba(165, 42, 42, 0.863);
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.navigation-navbar-collapse {
+justify-content: flex-end;
+}
+
+.navigation-buttons {
+    margin-right: 20px;
+    font-size: 22px;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.navigation-form-button {
+    background: darkgreen;
+    font-size: 22px;
+    color: white;
+    
+}
