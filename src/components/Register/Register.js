@@ -19,7 +19,9 @@ const Register = () => {
                 navigate('/home');
             } catch (error) {
                 const errorCode = error.code;
-                const errorMessage = error.message;              
+                const errorMessage = error.message;
+                alert(errorCode);
+                alert(errorMessage);
             }
 
         }
