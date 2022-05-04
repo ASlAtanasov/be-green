@@ -64,8 +64,10 @@ article.home-card-cardbody-cardtext {
 }
 
 .home-card-button-link {
+    font-size: 20px;
     color: white;
     text-decoration: none;
+    padding: 5px 10px;
 
 }
 

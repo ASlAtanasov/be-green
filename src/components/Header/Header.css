@@ -19,11 +19,22 @@
 justify-content: flex-end;
 }
 
-.navigation-buttons {
+.navigation-buttons {    
     margin-right: 20px;
-    font-size: 22px;
     padding: 10px 0;
+}
+
+.navigation-buttons a {
+    text-decoration: none;
+    color: black;
+    font-size: 22px; 
     font-weight: bold;
+}
+
+#navbarScroll > div > a > a:hover {
+    color: rgba(165, 42, 42, 0.863);
+    font-weight: bold;
+
 }
 
 .navigation-form-button {
@@ -32,3 +43,13 @@ justify-content: flex-end;
     color: white;
     
 }
+
+.navigation-form-button:hover {
+    background: rgba(165, 42, 42, 0.863);
+    font-size: 22px;
+    color: white;
+    
+}
+
+
+

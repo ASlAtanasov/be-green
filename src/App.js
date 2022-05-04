@@ -1,9 +1,11 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import Register from './components/Register/Register';
 
 
 function App() {
@@ -13,7 +15,9 @@ function App() {
       
       <main id="site-content">
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route exact path='/' element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/register' element={<Register />} />
         </Routes>
       </main>
 
