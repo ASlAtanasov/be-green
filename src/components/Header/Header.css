@@ -29,6 +29,9 @@ justify-content: flex-end;
     color: black;
     font-size: 22px; 
     font-weight: bold;
+    padding: 15px;
+    display: inline-block;
+    line-height: 20px;
 }
 
 #navbarScroll > div > a > a:hover {
@@ -50,6 +53,10 @@ justify-content: flex-end;
     color: white;
     
 }
+
+.navbar-nav p[role=button] {
+  
+  }
 
 
 

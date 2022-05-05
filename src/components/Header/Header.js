@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Container, Nav, Form, FormControl, Button} from 'react-bootstrap';
+import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
@@ -15,12 +15,12 @@ const Header = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link><Link to="/">Home</Link></Nav.Link>
-                        <Nav.Link><Link to="/body">Body</Link></Nav.Link>
-                        <Nav.Link><Link to="/foods">Foods</Link></Nav.Link>
-                        <Nav.Link><Link to="/nature">Nature</Link></Nav.Link>
-                        <Nav.Link><Link to="/login">Login</Link></Nav.Link>
-                        <Nav.Link><Link to="/register">Register</Link></Nav.Link>
+                        <Link to="/">Home</Link>
+                        <Link to="/body">Body</Link>
+                        <Link to="/foods">Foods</Link>
+                        <Link to="/nature">Nature</Link>
+                        <Link to="/login">Login</Link>
+                        <Link to="/register">Register</Link>
                     </Nav>
                     <Form className="d-flex">
                         <FormControl

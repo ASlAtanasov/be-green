@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import './Register.css';
 
-import { register } from '../../services/firebaseAuth';
+import { register } from '../../services/authService';
 
 const Register = () => {
     let navigate = useNavigate();

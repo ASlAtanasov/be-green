@@ -28,11 +28,11 @@ const Home = () => {
                 <Card.Img variant="top" src={foodsImageUrl} />
                 <Card.Body className='home-card-body'>
                     <Card.Title className='home-card-title'>Bio Foods</Card.Title>
-                    <Card.Text className='home-card-cardbody-cardtext'>
+                    <article className='home-card-cardbody-cardtext'>
                         <p>Vitamins, minerals and other supplements are important for the human body and deficiencies of these nutrients can result in serious health problems.</p>
                         <p>Therefore it is recommended that each person should eat at least five fruits and vegetables per day. The problem is that in many cases eating more fruits and vegetables means consuming more acids and toxins in our body.</p> 
                         <p>The intake of processed foods with chemicals, pesticides, processed fertilisers only aggravate people’s health. Especially pregnant women are not advised to consume those foods with lots of chemicals as this may affect the baby. The biggest advantage of bio products is that it does not contain preservatives, chemical additives and toxins. Compared to other products, organic food is not genetically modified, meaning there are no changes from its natural state and therefore no chemicals are ingested into our bodies. Bio foods are said to taste better compared to processed food and also have better nutritional value. Most people who have tried them do not return back to eating mass produced, commercial foods again.</p>
-                    </Card.Text>
+                    </article>
                     <Button className='home-card-button' variant="primary"><Link className='home-card-button-link' to={'/foods'}>Foods</Link></Button>
                 </Card.Body>
             </Card>
@@ -41,7 +41,7 @@ const Home = () => {
                 <Card.Img variant="top" src={natureImageUrl} />
                 <Card.Body className='home-card-body'>
                     <Card.Title className='home-card-title'>Nature Care</Card.Title>
-                    <Card.Text className='home-card-cardbody-cardtext'>
+                    <article className='home-card-cardbody-cardtext'>
                         <p>Nature is essential to our lives – from the food on our plates to the clothes we wear, from medicines to mental health benefits.</p>
                         
                         <p>It’s easy to think nature will always be with us. But even in my lifetime, birds like starlings and house sparrows have declined so much they’re now listed as endangered.
@@ -51,7 +51,7 @@ const Home = () => {
                         <p>Evidence is growing of how regular contact with nature boosts new born children’s healthy development, supports their physical and mental health and instils abilities to assess risk as they grow. It even underpins their informal learning and academic achievement.</p>
                         
                         <p>Nature performs major miracles for us every day – from giving us great views and helping to prevent floods to regulating the weather and keeping us supplied with clean water, fresh air and plentiful food. When running the tap or doing the shopping it’s easy to forget that without healthy soils and diverse plant and animal species doing their thing our lives would be tougher and poorer.</p>
-                    </Card.Text>
+                    </article>
                     <Button className='home-card-button' variant="primary"><Link className='home-card-button-link' to={'/nature'}>Nature</Link></Button>
                 </Card.Body>
             </Card>
