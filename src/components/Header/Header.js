@@ -1,9 +1,34 @@
 import React from 'react';
 import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useAuthUserContext } from '../../contexts/AuthContext';
 import './Header.css';
 
 const Header = () => {
+
+    const { user } = useAuthUserContext();
+
+    const loggedUser = (
+        <>
+            <Link to="/">Home</Link>
+            <Link to="/body">Body</Link>
+            <Link to="/foods">Foods</Link>
+            <Link to="/nature">Nature</Link>
+            <Link to="/logout">Logout</Link>
+        </>
+    );
+
+    const guest = (
+        <>
+            <Link to="/">Home</Link>
+            <Link to="/body">Body</Link>
+            <Link to="/foods">Foods</Link>
+            <Link to="/nature">Nature</Link>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+        </>
+    );
+
     return (
         <Navbar className='navigation'>
             <Container fluid className='navigation-container'>
@@ -15,12 +40,10 @@ const Header = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Link to="/">Home</Link>
-                        <Link to="/body">Body</Link>
-                        <Link to="/foods">Foods</Link>
-                        <Link to="/nature">Nature</Link>
-                        <Link to="/login">Login</Link>
-                        <Link to="/register">Register</Link>
+                        {user
+                            ? loggedUser
+                            : guest
+                        }
                     </Nav>
                     <Form className="d-flex">
                         <FormControl
