@@ -9,6 +9,8 @@ import Home from './components/Home';
 import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout';
+import Body from './components/Body';
+import ErrorPage from './components/ErrorPage';
 
 
 function App() {
@@ -23,7 +25,10 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
-            <Route path='/logout' element={<Logout />} />  */
+            <Route path='/logout' element={<Logout />} />
+            <Route path='/body' element={<Body />} /> 
+            <Route path='*' element={<ErrorPage />} /> 
+            
           </Routes>
         </main>
 
@@ -31,6 +36,7 @@ function App() {
           <p>BE GREEN</p>
         </footer>
       </div>
+      
     </AuthContextProvider>
   );
 }
