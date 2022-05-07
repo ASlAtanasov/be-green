@@ -1,0 +1,56 @@
+.login-section-form {
+    max-width: 500px;
+    margin: 80px auto 400px auto;
+    border: 2px solid black;
+    padding-bottom: 20px;
+}
+
+#login-form > fieldset > legend {
+    background-color: rgb(68, 192, 68);
+    padding: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.login-section-form-fieldset-p-email {
+    margin: 20px;
+}
+
+.login-section-form-fieldset-p-email label {
+    margin-right: 20px;
+    font-size: 18px;
+
+}
+
+.login-section-form-fieldset-p-password {
+    margin: 20px;
+}
+
+.login-section-form-fieldset-p-password label {
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.login-section-form-fieldset-p-repeat-password {
+    margin: 20px;
+}
+
+.login-section-form-fieldset-p-repeat-password label {
+    margin-right: 20px;
+    font-size: 18px;
+
+}
+
+.login-section-form-fieldset-button {
+    padding: 5px 10px;
+    background: rgb(68, 192, 68);;
+    font-weight: bold;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.login-section-form-fieldset-button:hover {   
+    background: rgba(165, 42, 42, 0.863);
+    color: white;
+    font-weight: bold;
+}

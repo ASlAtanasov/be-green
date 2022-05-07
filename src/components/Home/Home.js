@@ -43,13 +43,10 @@ const Home = () => {
                     <Card.Title className='home-card-title'>Nature Care</Card.Title>
                     <article className='home-card-cardbody-cardtext'>
                         <p>Nature is essential to our lives – from the food on our plates to the clothes we wear, from medicines to mental health benefits.</p>
-                        
                         <p>It’s easy to think nature will always be with us. But even in my lifetime, birds like starlings and house sparrows have declined so much they’re now listed as endangered.
                         In fact, nature is faring worse in the UK than in most other countries. The latest State of Nature report shows that over half our wild species – plants, insects, birds, mammals – are in decline.
                         Children especially have a natural affinity with nature.</p> 
-
                         <p>Evidence is growing of how regular contact with nature boosts new born children’s healthy development, supports their physical and mental health and instils abilities to assess risk as they grow. It even underpins their informal learning and academic achievement.</p>
-                        
                         <p>Nature performs major miracles for us every day – from giving us great views and helping to prevent floods to regulating the weather and keeping us supplied with clean water, fresh air and plentiful food. When running the tap or doing the shopping it’s easy to forget that without healthy soils and diverse plant and animal species doing their thing our lives would be tougher and poorer.</p>
                     </article>
                     <Button className='home-card-button' variant="primary"><Link className='home-card-button-link' to={'/nature'}>Nature</Link></Button>

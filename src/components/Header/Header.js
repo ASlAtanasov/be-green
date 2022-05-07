@@ -2,11 +2,26 @@ import React from 'react';
 import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuthUserContext } from '../../contexts/AuthContext';
+//import { signOutPage } from '../../services/authService';
+//import { useNavigate } from 'react-router';
+
 import './Header.css';
 
 const Header = () => {
 
-    const { user } = useAuthUserContext();
+    const { user, logout } = useAuthUserContext();
+    // const navigate = useNavigate()
+    // const logoutHandler = async () => {
+    //     try {
+    //         await signOutPage();
+    //         localStorage.removeItem('user');
+    //          logout();
+    //         navigate('/home');
+    //         alert('You signed out successfully')
+    //     } catch (error) {
+    //         alert(error.message);
+    //     }
+    // };
 
     const loggedUser = (
         <>
@@ -14,7 +29,7 @@ const Header = () => {
             <Link to="/body">Body</Link>
             <Link to="/foods">Foods</Link>
             <Link to="/nature">Nature</Link>
-            <Link to="/logout">Logout</Link>
+            <Link to="/logout" /*onClick={logoutHandler}*/>Logout</Link>
         </>
     );
 

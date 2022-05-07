@@ -1,11 +1,12 @@
-import { initializeApp, registerVersion } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+import { initializeApp } from "firebase/app";
+//import { getAnalytics } from "firebase/analytics";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from 'firebase/auth';
+import { getDatabase, ref, set } from "firebase/database";
 
-//your web app's Firebase congiguration
 const firebaseConfig = {
   apiKey: "AIzaSyCzFJpEyukhF5i9lVtKR3vExLeUm-fwVqw",
   authDomain: "be-green-163a0.firebaseapp.com",
+  databaseURL: "https://be-green-163a0-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "be-green-163a0",
   storageBucket: "be-green-163a0.appspot.com",
   messagingSenderId: "6015756216",
@@ -14,9 +15,30 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth();
+//const analytics = getAnalytics(app);
 
-export function register(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
+export const auth = getAuth();
+export const database = getDatabase();
+
+export function signUp(email, password) {
+ return createUserWithEmailAndPassword(auth, email, password);
 };
+
+export function signIn(email, password) {
+  return signInWithEmailAndPassword(auth, email, password);
+}
+
+export function signOutPage() {   
+  return signOut(auth);
+}
+
+export function saveUserData(userId, country, city, address, postalCode) {
+    set(ref(database, 'users/' + userId), {
+    country, 
+    city, 
+    address, 
+    postalCode
+  });
+}
+
+
