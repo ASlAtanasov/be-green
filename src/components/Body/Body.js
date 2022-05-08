@@ -18,7 +18,7 @@ const Home = () => {
         e.preventDefault();
 
         let button = e.currentTarget;
-        let arrow = e.currentTarget.children[1];
+        let arrow = e.currentTarget.children[2];
         let filterMenu = button.nextSibling;
 
         filterMenu.classList.toggle('filter-collapse-active');
@@ -48,12 +48,7 @@ const Home = () => {
                 <div className="side-wrapper">
                     <div className="side-title">BODY CARE</div>
                     <div className="side-menu">
-                        {/* <a className="sidebar-link discover is-active" href="/home">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M9.135 20.773v-3.057c0-.78.637-1.414 1.423-1.414h2.875c.377 0 .74.15 1.006.414.267.265.417.625.417 1v3.057c-.002.325.126.637.356.867.23.23.544.36.87.36h1.962a3.46 3.46 0 002.443-1 3.41 3.41 0 001.013-2.422V9.867c0-.735-.328-1.431-.895-1.902l-6.671-5.29a3.097 3.097 0 00-3.949.072L3.467 7.965A2.474 2.474 0 002.5 9.867v8.702C2.5 20.464 4.047 22 5.956 22h1.916c.68 0 1.231-.544 1.236-.218l.027-.009z" />
-                            </svg>
-                            Home
-                        </a> */}
+                        
                         <a className="sidebar-link" href="#">
                             <FontAwesomeIcon icon={faPersonHalfDress} />
                             Whole body
@@ -266,10 +261,10 @@ const Home = () => {
                     }
                 </div>
                 <div className="main-container">
-                    <div className="main-header anim" /*style={"--delay: 0s"}*/>Discover the products you need</div>
+                    <div className="main-header anim" /*style={"--delay: 0s"*/>Discover the products you need</div>
 
-                    <div className="videos">
-                        <div className="video anim" /*style={"--delay: .4s"}*/>
+                    {/* <div className="videos">
+                        <div className="video anim" /*style={"--delay: .4s"}>
                             <div className="video-time">8 min</div>
                             <div className="video-wrapper">
                                 <video muted="">
@@ -286,7 +281,7 @@ const Home = () => {
                             <div className="video-name">Basic how to ride your skateboard comfortly</div>
                             <div className="video-view">54K views<span className="seperate video-seperate"></span>1 week ago</div>
                         </div>
-                        <div className="video anim" /*style={"--delay: .5s"}*/>
+                        <div className="video anim" /*style={"--delay: .5s"}>
                             <div className="video-time">5 min</div>
                             <div className="video-wrapper">
                                 <video muted="">
@@ -303,7 +298,7 @@ const Home = () => {
                             <div className="video-name">Prepare for your first skateboard jump</div>
                             <div className="video-view">42K views<span className="seperate video-seperate"></span>1 week ago</div>
                         </div>
-                        <div className="video anim" /*style={"--delay: .6s"}*/>
+                        <div className="video anim" /*style={"--delay: .6s"}>
                             <div className="video-time">7 min</div>
                             <div className="video-wrapper">
                                 <video muted="">
@@ -320,7 +315,7 @@ const Home = () => {
                             <div className="video-name">Basic equipment to play skateboard safely</div>
                             <div className="video-view">64K views<span className="seperate video-seperate"></span>2 week ago</div>
                         </div>
-                        <div className="video anim" /*style={"--delay: .7s"}*/>
+                        <div className="video anim" /*style={"--delay: .7s"}>
                             <div className="video-time">6 min</div>
                             <div className="video-wrapper">
                                 <video muted="">
@@ -346,7 +341,7 @@ const Home = () => {
                             </video>
                             <div className="video-detail">
                                 <div className="video-content">
-                                    <div className="video-p-wrapper anim" /*style={"--delay: .1s"}*/>
+                                    <div className="video-p-wrapper anim" /*style={"--delay: .1s"}>
                                         <div className="author-img__wrapper video-author video-p">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check">
                                                 <path d="M20 6L9 17l-5-5" />
@@ -372,9 +367,9 @@ const Home = () => {
                                             </button>
                                         </div>
                                     </div>
-                                    <div className="video-p-title anim" /*style={"--delay: .2s"}*/>Basic how to ride your Skateboard</div>
-                                    <div className="video-p-subtitle anim" /*style={"--delay: .3s"}*/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus illum tempora consequuntur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis earum velit accusantium maiores qui sit quas, laborum voluptatibus vero quidem tempore facilis voluptate tempora deserunt! </div>
-                                    <div className="video-p-subtitle anim" /*style={"--delay: .4s"}*/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus laborum qui olorum fugiat eius accusantium repellendus illum tempora consequuntur. Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+                                    <div className="video-p-title anim" /*style={"--delay: .2s"}>Basic how to ride your Skateboard</div>
+                                    <div className="video-p-subtitle anim" /*style={"--delay: .3s"}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus illum tempora consequuntur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis earum velit accusantium maiores qui sit quas, laborum voluptatibus vero quidem tempore facilis voluptate tempora deserunt! </div>
+                                    <div className="video-p-subtitle anim" /*style={"--delay: .4s"}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus laborum qui olorum fugiat eius accusantium repellendus illum tempora consequuntur. Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
                                 </div>
                             </div>
                         </div>
@@ -388,7 +383,7 @@ const Home = () => {
                                 </span>
                                 </div>
                                 <div className="message-container">
-                                    <div className="message anim" /*style={"--delay: .1s"}*/>
+                                    <div className="message anim" /*style={"--delay: .1s"}>
                                         <div className="author-img__wrapper video-author video-p">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check">
                                                 <path d="M20 6L9 17l-5-5" />
@@ -400,7 +395,7 @@ const Home = () => {
                                             <div className="msg__content video-p-sub"> Lorem ipsum clor sit, ame conse quae debitis</div>
                                         </div>
                                     </div>
-                                    <div className="message anim" /*style={"--delay: .2s"}*/>
+                                    <div className="message anim" /*style={"--delay: .2s">
                                         <div className="author-img__wrapper video-author video-p">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check">
                                                 <path d="M20 6L9 17l-5-5" />
@@ -412,7 +407,7 @@ const Home = () => {
                                             <div className="msg__content video-p-sub"> Suscipit eos atque voluptates labore</div>
                                         </div>
                                     </div>
-                                    <div className="message anim" /*style={"--delay: .3s"}*/>
+                                    <div className="message anim" /*style={"--delay: .3s">
                                         <div className="author-img__wrapper video-author video-p">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check">
                                                 <path d="M20 6L9 17l-5-5" />
@@ -424,7 +419,7 @@ const Home = () => {
                                             <div className="msg__content video-p-sub">Dicta quidem sunt adipisci</div>
                                         </div>
                                     </div>
-                                    <div className="message anim" /*style={"--delay: .4s"}*/>
+                                    <div className="message anim" /*style={"--delay: .4s">
                                         <div className="author-img__wrapper video-author video-p">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check">
                                                 <path d="M20 6L9 17l-5-5" />
@@ -436,7 +431,7 @@ const Home = () => {
                                             <div className="msg__content video-p-sub"> recusandae doloremque aperiam alias molestias</div>
                                         </div>
                                     </div>
-                                    <div className="message anim" /*style={"--delay: .5s"}*/>
+                                    <div className="message anim" /*style={"--delay: .5s">
                                         <div className="author-img__wrapper video-author video-p">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check">
                                                 <path d="M20 6L9 17l-5-5" />
@@ -448,7 +443,7 @@ const Home = () => {
                                             <div className="msg__content video-p-sub">Dicta quidem sunt adipisci</div>
                                         </div>
                                     </div>
-                                    <div className="message anim" /*style={"--delay: .6s"}*/>
+                                    <div className="message anim" /*style={"--delay: .6s">
                                         <div className="author-img__wrapper video-author video-p">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check">
                                                 <path d="M20 6L9 17l-5-5" />
@@ -461,13 +456,13 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="chat-footer anim" /*style={"--delay: .1s"}*/>
+                                <div className="chat-footer anim" /*style={"--delay: .1s">
                                     <input type="text" placeholder="Write your message" />
                                 </div>
                             </div>
                             <div className="chat-vid__container">
-                                <div className="chat-vid__title anim" /*style={"--delay: .3s"}*/>Related Videos</div>
-                                <div className="chat-vid anim" /*style={"--delay: .4s"}*/>
+                                <div className="chat-vid__title anim" /*style={"--delay: .3s">Related Videos</div>
+                                <div className="chat-vid anim" /*style={"--delay: .4s">
                                     <div className="chat-vid__wrapper">
                                         <img className="chat-vid__img" src="https://cdn.nohat.cc/thumb/f/720/3b55eddcfffa4e87897d.jpg" />
                                         <div className="chat-vid__content">
@@ -477,7 +472,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="chat-vid anim" /*style={"--delay: .5s"}*/>
+                                <div className="chat-vid anim" /*style={"--delay: .5s">
                                     <div className="chat-vid__wrapper">
                                         <img className="chat-vid__img" src="https://iamaround.it/wp-content/uploads/2015/02/pexels-photo-4663818.jpeg" />
                                         <div className="chat-vid__content">
@@ -487,10 +482,10 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="chat-vid__button anim" /*style={"--delay: .6s"}*/>See All related videos (32)</div>
+                                <div className="chat-vid__button anim" /*style={"--delay: .6s">See All related videos (32)</div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
