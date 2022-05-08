@@ -262,7 +262,10 @@ const Home = () => {
                 </div>
                 <div className="main-container">
                     <div className="main-header anim" /*style={"--delay: 0s"*/>Discover the products you need</div>
+                    <div className='products-list'>
 
+                    </div>
+                    
                     {/* <div className="videos">
                         <div className="video anim" /*style={"--delay: .4s"}>
                             <div className="video-time">8 min</div>
