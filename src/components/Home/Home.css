@@ -19,6 +19,7 @@ body {
     margin: 40px auto;
     display: flex;
     justify-content: space-between;
+    color: black;
 }
 
 .card {
@@ -42,14 +43,16 @@ body {
 .home-card-cardbody-cardtext {
     height: 210px;
     white-space: pre-wrap;
-    overflow: overlay;
     text-overflow: ellipsis;
+    overflow: overlay;
+   
 }
 
 .home-card-cardbody-cardtext p {
     text-indent: 20px;
     text-align: justify;
     padding-right: 20px;
+    color: black;
 }
 
 .home-card-button {
