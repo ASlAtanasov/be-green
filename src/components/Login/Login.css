@@ -19,7 +19,7 @@
 .login-section-form-fieldset-p-email label {
     margin-right: 20px;
     font-size: 18px;
-
+    color: black;
 }
 
 .login-section-form-fieldset-p-password {
@@ -29,16 +29,7 @@
 .login-section-form-fieldset-p-password label {
     margin-right: 20px;
     font-size: 18px;
-}
-
-.login-section-form-fieldset-p-repeat-password {
-    margin: 20px;
-}
-
-.login-section-form-fieldset-p-repeat-password label {
-    margin-right: 20px;
-    font-size: 18px;
-
+    color: black;
 }
 
 .login-section-form-fieldset-button {

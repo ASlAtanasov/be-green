@@ -32,13 +32,6 @@ const Register = () => {
         try {
             let user = await register(email, password);
 
-            console.log(user.uid)
-            console.log(email);
-            console.log(country);
-            console.log(city);
-            console.log(address);
-            console.log(postalCode);
-
             if (user) {
                 saveUserData(user.uid, country, city, address, postalCode)
 
@@ -49,9 +42,9 @@ const Register = () => {
             const errorMessage = error.message;
 
             alert(`${errorCode}: ${errorMessage}`);
-        }
+        };
 
-    }
+    };
 
 
 
