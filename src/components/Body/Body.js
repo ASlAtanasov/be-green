@@ -5,15 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFaceSmile, faHandSparkles, faBarcode, faStaffAesculapius, faHandHoldingHeart, faDroplet, faPersonHalfDress, faTrademark, faSortUp } from '@fortawesome/free-solid-svg-icons';
 
 
-// Add all icons to the library so you can use it in your page
-
 let arrowSvgUp = false;
 
 const Home = () => {
 
     const { user } = useAuthUserContext();
 
-    // useEffect(() => {
+   
     const toggleClassFilterButtonOnClick = (e) => {
         e.preventDefault();
 
@@ -30,15 +28,10 @@ const Home = () => {
         } else {
             arrow.classList.remove('filter-arrow-up');
         }
-
-
-        // = filterMenu.getAttribute('className') === 'filter-collapse' 
-        // ? 'filter-collapse-active'
-        // : 'filter-collapse'
-
+      
         return arrowSvgUp;
     }
-    // }, []);
+    
 
 
     return (
@@ -255,7 +248,7 @@ const Home = () => {
 
                     {user
                         ? (<>
-                            <span className="logo">Welcome, {user.email}</span>
+                            <span className="logo">Welcome, {user.email}!</span>
                         </>)
                         : <span className="logo">Welcome!</span>
                     }
@@ -265,7 +258,7 @@ const Home = () => {
                     <div className='products-list'>
 
                     </div>
-                    
+
                     {/* <div className="videos">
                         <div className="video anim" /*style={"--delay: .4s"}>
                             <div className="video-time">8 min</div>
