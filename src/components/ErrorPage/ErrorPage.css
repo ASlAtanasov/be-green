@@ -1,15 +1,7 @@
-/* body {
-    margin: 0;
-    padding: 0;
-    font-family: "montserrat", sans-serif;
-    min-height: 100vh;
-    background-image: linear-gradient(to right bottom, #f4006a, #f32261, #f1345a, #ee4153, #eb4d4d);
-} */
-
 .container {
     max-width: 1000px;
     max-height: 800px;
-    margin: 200px;
+    margin: 50px 200px;
     padding: 150px;
     font-family: "montserrat", sans-serif;
     background-image: linear-gradient(to right bottom, rgb(68, 192, 68), rgb(68, 192, 68), rgb(68, 192, 68), rgb(68, 192, 68), rgb(68, 192, 68));
