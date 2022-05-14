@@ -1,0 +1,229 @@
+.create-section-form {
+    max-width: 500px;
+    margin: 80px auto 400px auto;
+    border: 2px solid black;
+    padding-bottom: 20px;
+}
+
+#create-form>fieldset>legend {
+    background-color: rgb(68, 192, 68);
+    padding: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.create-section-form-fieldset-p-name {
+    margin: 20px;
+    display: flex;
+}
+
+.create-section-form-fieldset-p-name label {
+    margin-right: 20px;
+    font-size: 18px;
+    color: black;
+    width: 100px;
+}
+
+.create-section-form-fieldset-p-name span {
+   flex-grow: 1;
+
+}
+.create-section-form-fieldset-p-name input {
+    width: 100%;
+ }
+
+
+
+.create-section-form-fieldset-p-description {
+    margin: 20px;
+    display: flex;
+}
+
+.create-section-form-fieldset-p-description label {
+    margin-right: 20px;
+    font-size: 18px;
+    color: black;
+    width: 100px;
+}
+
+.create-section-form-fieldset-p-description span {
+    flex-grow: 1;
+ 
+ }
+ .create-section-form-fieldset-p-description textarea {
+     width: 100%;
+  }
+
+  .create-section-form-fieldset-p-imageFile {
+    margin: 20px;
+    display: flex;
+}
+
+.create-section-form-fieldset-p-imageFile label {
+    margin-right: 20px;
+    font-size: 18px;
+    color: black;
+    width: 100px;
+}
+
+.create-section-form-fieldset-p-imageFile span {
+   flex-grow: 1;
+
+}
+.create-section-form-fieldset-p-imageFile input {
+    width: 100%;
+ }
+
+ .create-section-form-fieldset-p-price {
+    margin: 20px;
+    display: flex;
+}
+
+.create-section-form-fieldset-p-price label {
+    margin-right: 20px;
+    font-size: 18px;
+    color: black;
+    width: 100px;
+}
+
+.create-section-form-fieldset-p-price span {
+   flex-grow: 1;
+
+}
+.create-section-form-fieldset-p-price input {
+    width: 100%;
+ }
+
+ .create-section-form-fieldset-p-careType {
+    margin: 20px;
+    display: flex;
+}
+
+.create-section-form-fieldset-p-careType label {
+    margin-right: 20px;
+    font-size: 18px;
+    color: black;
+    width: 100px;
+}
+
+.create-section-form-fieldset-p-careType span {
+   flex-grow: 1;
+
+}
+.create-section-form-fieldset-p-careType select {
+    width: 100%;
+ }
+
+ .create-section-form-fieldset-p-brand {
+    margin: 20px;
+    display: flex;
+}
+
+.create-section-form-fieldset-p-brand label {
+    margin-right: 20px;
+    font-size: 18px;
+    color: black;
+    width: 100px;
+}
+
+.create-section-form-fieldset-p-brand span {
+   flex-grow: 1;
+
+}
+.create-section-form-fieldset-p-brand select {
+    width: 100%;
+ }
+
+ .create-section-form-fieldset-p-productType {
+    margin: 20px;
+    display: flex;
+}
+
+.create-section-form-fieldset-p-productType label {
+    margin-right: 20px;
+    font-size: 18px;
+    color: black;
+    width: 110px;
+}
+
+.create-section-form-fieldset-p-productType span {
+   flex-grow: 1;
+
+}
+.create-section-form-fieldset-p-productType select {
+    width: 100%;
+ }
+
+ .create-section-form-fieldset-p-skinType {
+    margin: 20px;
+    display: flex;
+}
+
+.create-section-form-fieldset-p-skinType label {
+    margin-right: 20px;
+    font-size: 18px;
+    color: black;
+    width: 100px;
+}
+
+.create-section-form-fieldset-p-skinType span {
+   flex-grow: 1;
+
+}
+.create-section-form-fieldset-p-skinType select {
+    width: 100%;
+ }
+
+
+
+
+
+
+
+
+
+.create-section-form-fieldset-article-address {
+    margin: 20px 0;
+}
+.create-section-form-fieldset-article-address label {
+    margin-right: 20px;
+    font-size: 18px;
+    color: black;
+    width: 100px;
+}
+
+.create-section-form-fieldset-article-p {
+    margin: 20px;
+}
+
+.create-section-form-fieldset-article-p label {
+    width: 90px;
+    margin-right: 20px;
+    margin-left: 40px;
+    font-size: 18px;
+    color: black;
+    width: 100px;
+
+}
+
+.create-section-form-fieldset-article-p select {
+   width: 290px;
+}
+
+.create-section-form-fieldset-article-p input {
+    width: 290px;
+ }
+
+.create-section-form-fieldset-button {
+    padding: 5px 10px;
+    background: rgb(68, 192, 68);;
+    font-weight: bold;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.create-section-form-fieldset-button:hover {   
+    background: rgba(165, 42, 42, 0.863);
+    color: white;
+    font-weight: bold;
+}

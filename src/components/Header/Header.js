@@ -25,6 +25,9 @@ const Header = () => {
 
     const loggedUser = (
         <>
+            {user.uid === '2CLGcFqcCASXAdKXb0HHAz7neIj1'
+                ? <Link to="/create">Create</Link>
+                : ''}
             <Link to="/">Home</Link>
             <Link to="/body">Body</Link>
             <Link to="/foods">Foods</Link>

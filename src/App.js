@@ -10,6 +10,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Body from './components/Body';
+import Create from './components/Create'
 import ErrorPage from './components/ErrorPage';
 
 
@@ -27,6 +28,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/logout' element={<Logout />} />
             <Route path='/body' element={<Body />} /> 
+            <Route path='/create' element={<Create />} /> 
             <Route path='*' element={<ErrorPage />} /> 
             
           </Routes>

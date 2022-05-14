@@ -1,9 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Body.css';
 import MenuWithToggle from '../MenuWithToggle/MenuWithToggle';
+import SideNavigationLink from '../SideNavigationLink';
 import { useAuthUserContext } from '../../contexts/AuthContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFaceSmile, faHandSparkles, faBarcode, faStaffAesculapius, faHandHoldingHeart, faDroplet, faPersonHalfDress, faTrademark, faSortUp } from '@fortawesome/free-solid-svg-icons';
+import { faFaceSmile, faHandSparkles, faBarcode, faStaffAesculapius, faHandHoldingHeart, faDroplet, faPersonHalfDress, faTrademark } from '@fortawesome/free-solid-svg-icons';
+
+const BodyCareOptions = [{
+    title: 'Whole body',
+    icon: faPersonHalfDress,
+},
+{
+    title: 'Face',
+    icon: faFaceSmile,
+},
+{
+    title: 'Hair',
+    icon: faDroplet,
+},
+{
+    title: 'Hands',
+    icon: faHandHoldingHeart,
+}];
 
 const CareAboutOptions = ['Whole body', 'Face', 'Hair', 'Hands'];
 const BrandsOptions = ['Avon', 'Garnier', 'Loreal', 'Oriflame'];
@@ -11,16 +28,9 @@ const ProductsOptions = ['Cream', 'Lotion', 'Oil', 'Shampoo'];
 const SkinTypeOptions = ['Dry', 'Moist', 'Normal'];
 
 
+
 const Home = () => {
     const { user } = useAuthUserContext();
-    const [isClicked, setIsClicked] = useState(false);
-
-    const toggleClassFilterButtonOnClick = (e) => {
-        e.preventDefault();
-
-        setIsClicked(!isClicked);
-
-    }
 
     return (
 
@@ -30,22 +40,10 @@ const Home = () => {
                     <div className="side-title">BODY CARE</div>
                     <div className="side-menu">
 
-                        <a className="sidebar-link" href="#">
-                            <FontAwesomeIcon icon={faPersonHalfDress} />
-                            Whole body
-                        </a>
-                        <a className="sidebar-link trending" href="#">
-                            <FontAwesomeIcon icon={faFaceSmile} />
-                            Face
-                        </a>
-                        <a className="sidebar-link" href="#">
-                            <FontAwesomeIcon icon={faDroplet} />
-                            Hair
-                        </a>
-                        <a className="sidebar-link" href="#">
-                            <FontAwesomeIcon icon={faHandHoldingHeart} />
-                            Hands
-                        </a>
+                        {BodyCareOptions.map((opt) => (
+                            <SideNavigationLink key={opt} title={opt.title} icon={opt.icon} />
+                        ))}
+
                     </div>
                 </div>
                 <div className="side-wrapper">
@@ -57,7 +55,7 @@ const Home = () => {
 
                         <MenuWithToggle label='Products' options={ProductsOptions} icon={faBarcode} />
 
-                        <MenuWithToggle label='Skin type' options={SkinTypeOptions} icon={faHandSparkles} />               
+                        <MenuWithToggle label='Skin type' options={SkinTypeOptions} icon={faHandSparkles} />
                     </div>
                 </div>
             </div>

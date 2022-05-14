@@ -19,6 +19,11 @@ const Register = () => {
             return;
         }
 
+        if (password.length < 6) {
+            alert("Your password should be at least 6 symbols");
+            return;
+        }
+
         if (password !== repeatPassword || password.length < 6) {
             alert("Your password should be equal to repeat password");
             return;
