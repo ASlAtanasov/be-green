@@ -1,0 +1,42 @@
+button.sidebar-link {
+    border: none;
+    outline: none;
+    background: none;
+}
+
+svg.svg-inline--fa.fa-sort-down.filter-arrow {
+    transform: rotate(0deg);
+    transition: transform 200ms ease-in-out;
+    padding-top: 4px;
+    margin-right: 0px;
+  }
+  
+  svg.svg-inline--fa.fa-sort-down.filter-arrow.filter-arrow-up {
+    transform: rotate(180deg);
+    margin-top: 9px;
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+  }
+
+  div.side-menu > div > button {
+      padding-right: 0;
+  }
+
+  div.side-menu > div > button svg {
+    margin-right: 0;
+}
+
+ div.sidebar > div:nth-child(2) > div.side-menu > div > button > span {
+    flex-grow: 1;
+    vertical-align: middle;
+    padding-top: 4px;
+    font-weight: 500;
+  }
+
+  div.side-menu > a.sidebar-link.discover.is-active svg {
+    margin-right: 10px;
+  }
+
+  div.filter-collapse.filter-collapse-active {
+      margin-bottom: 20px;
+  }

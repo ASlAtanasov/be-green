@@ -161,9 +161,9 @@ div.sidebar>div:nth-child(2)>div.side-menu>a:nth-child(1):hover svg:nth-child(1)
   margin-right: 0;
 }
 
-div.sidebar>div:nth-child(2)>div.side-menu>a span {
+/* div.sidebar>div:nth-child(2)>div.side-menu>a span {
   flex-grow: 1;
-}
+} */
 
 .sidebar.collapse {
   width: 90px;
@@ -1289,7 +1289,7 @@ div.side-menu > a.sidebar-link  {
   margin-top: 0px;
 
 }
-svg.svg-inline--fa.fa-sort-down.filter-arrow {
+/* svg.svg-inline--fa.fa-sort-down.filter-arrow {
   transform: rotate(0deg);
   transition: transform 200ms ease-in-out;
   padding-top: 4px;
@@ -1300,7 +1300,7 @@ svg.svg-inline--fa.fa-sort-down.filter-arrow.filter-arrow-up {
   transform: rotate(180deg);
   margin-top: 9px;
   margin-bottom: 0px;
-}
+} */
 
 svg.svg-inline--fa.fa-sort-down:hover {
   color: rgba(165, 42, 42, 0.863);
@@ -1324,6 +1324,6 @@ div.side-menu > a.sidebar-link svg:nth-child(1) {
   margin-right: 0px;
 }
 
- div.side-menu > a.sidebar-link.discover.is-active svg {
+ /* div.side-menu > a.sidebar-link.discover.is-active svg {
    margin-right: 10px;
- }
+ } */
