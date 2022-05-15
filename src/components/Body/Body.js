@@ -24,7 +24,7 @@ const BodyCareOptions = [{
 
 const CareAboutOptions = ['Whole body', 'Face', 'Hair', 'Hands'];
 const BrandsOptions = ['Avon', 'Garnier', 'Loreal', 'Oriflame'];
-const ProductsOptions = ['Cream', 'Lotion', 'Oil', 'Shampoo'];
+const ProductsOptions = ['Cream', 'Lotion', 'Mask', 'Oil', 'Shampoo', 'Wash'];
 const SkinTypeOptions = ['Dry', 'Moist', 'Normal'];
 
 

@@ -1,79 +1,25 @@
 import React from "react";
 import './Create.css';
 
-import { app, auth, storage } from '../../firebase';
+import { app, auth, storage, database } from '../../firebase';
 import { useState } from 'react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { writeProductData } from "../../services/productService";
+import { uploadImageHandler, createProductSubmitHandler } from "../../services/productService";
 
 const Create = () => {
-    const [imageUrl, setImageUrl] = useState(null)
+    const [imageUrl, setImageUrl] = useState(null);
+    let [isUploaded, setIsUploaded] = useState(false)
 
-    const uploadImageHandler = (e) => {
-        e.preventDefault();
+    //uploadImageHandler(imageUrl, setImageUrl, setIsUploaded);
+    //const { name, description, price, brand, careType, productType, skinType } = Object.fromEntries(new FormData(e.currentTarget));
 
-        if (imageUrl == null) {
-            return;
-        }
-
-        const imageRef = ref(storage, `images/${imageUrl.name + v4()}`)
-
-        uploadBytes(imageRef, imageUrl)
-            .then((response) => {
-                console.log(response);
-                alert('image Uploaded');
-                let metadata = Object.values(response);
-                console.log(metadata);
-                let imageName = metadata[0].name;
-                console.log(`Image name: ${imageName}`)
-
-                getDownloadURL(ref(storage, `/images/${imageName}`))
-                    .then((url) => {
-                        console.log(`url ${url}`)
-
-                        setImageUrl(url);
-                    });
-
-            })
-            .catch((error) => {
-                alert(error);
-            })
-
-        console.log(`setImageUrl 2: ${imageUrl}`);
-
-
-
-        // useEffect(() => {
-
-        // }, []);
-
-    };
-
-    const createProductSubmitHandler = (e) => {
-        e.preventDefault();
-        const { name, description, price, brand, careType, productType, skinType } = Object.fromEntries(new FormData(e.currentTarget));
-        console.log(name)
-        console.log(description)
-        console.log(imageUrl)
-        console.log(price)
-        console.log(brand)
-        console.log(careType)
-        console.log(productType)
-        console.log(skinType)
-        try {
-           writeProductData(name, description, imageUrl, price, brand, careType, productType, skinType);
-            console.log('Successful writing of product data');
-        } catch (error) {
-            alert(error);
-        }
-    };
-
-
+    //createProductSubmitHandler(imageUrl, setIsUploaded);
 
     return (
         <section id="create-page" className="create create-section">
-            <form id="create-form" className='create-section-form' method="POST" onSubmit={createProductSubmitHandler}>
+            <form id="create-form" className='create-section-form' method="POST" onSubmit={createProductSubmitHandler(imageUrl, setIsUploaded)}>
                 <fieldset>
                     <legend>Add new product</legend>
                     <p className="field create-section-form-fieldset-p-name">
@@ -91,8 +37,12 @@ const Create = () => {
                     <p className="field create-section-form-fieldset-p-imageFile">
                         <label htmlFor="imageFile">Image file:</label>
                         <span className="input">
-                            <input type="file" name="imageFile" id="imageFile" onChange={(e) => setImageUrl(e.currentTarget.files[0])} />
-                            <button type="submit" onClick={uploadImageHandler}>Upload to firebase</button>
+                            <input type="file" name="imageFile" id="imageFile" onChange={
+                                (e) => {
+                                    setImageUrl(e.currentTarget.files[0])
+                                    console.log('ImageUrl is set')
+                                }} />
+                            <button type="submit" onClick={uploadImageHandler(imageUrl, setImageUrl, setIsUploaded)} disabled={isUploaded}>Upload to firebase</button>
                         </span>
                     </p>
                     <p className="field create-section-form-fieldset-p-price">
@@ -129,8 +79,10 @@ const Create = () => {
                             <select id="productType" name="productType">
                                 <option value="cream">Cream</option>
                                 <option value="lotion">Lotion</option>
+                                <option value="mask">Mask</option>
                                 <option value="oil">Oil</option>
                                 <option value="shampoo">Shampoo</option>
+                                <option value="wash">Wash</option>
                             </select>
                         </span>
                     </p>
