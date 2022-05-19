@@ -1,12 +1,15 @@
 import React from "react";
 import { createContext, useContext, useState } from "react";
-import { signUp, signIn } from '../services/authService';
+import { signUp, signIn, signOutPage } from '../services/authService';
+import { useNavigate } from 'react-router';
 
 const AuthContext = createContext();
 
+const initialState = '';
 
 export const AuthContextProvider = ({ children }) => {
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState(initialState);
+    const navigate = useNavigate();
 
     const login = async (email, password) => {
         try {
@@ -41,7 +44,18 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     const logout = () => {
-        setUser('');
+        signOutPage()
+            .then(() => {
+                localStorage.removeItem('user');
+                
+                navigate('/');
+                //return <Navigate to='home' />;
+               setUser(initialState);
+                alert('You signed out successfully');
+            })
+            .catch((error) => {
+                alert(error.message)
+            });
         console.log(user);
     }
 

@@ -1,0 +1,132 @@
+.card {
+    width: 30%;
+
+}
+
+.product-card {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.product-card img {
+  height: 300px;
+}
+
+.product-card-body {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.product-card-title {
+  height: 30px;
+    text-indent: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.product-card-cardbody-cardtext {
+    height: 90px;
+    white-space: pre-wrap;
+    overflow: overlay;
+    /* text-overflow: ellipsis; */
+   
+}
+
+.product-card-cardbody-cardtext p {
+    text-indent: 20px;
+    text-align: justify;
+    padding-right: 20px;
+    color: black;
+    height: 100%;
+}
+
+.product-card-price {
+  color: black;
+  text-align: end;
+  padding-right: 20px;
+}
+
+.product-card-section-buttons {
+justify-content: space-around;
+}
+
+.product-card-button-datails {
+    background-color: rgb(68, 192, 68);
+    border: 1px solid rgb(68, 192, 68);
+    margin-right: 10px;
+}
+
+.product-card-button-datails:hover {
+    background-color: rgba(165, 42, 42, 0.863);
+    margin-right: 10px;
+}
+
+article.product-card-cardbody-cardtext {
+    margin-bottom: 15px;
+}
+
+.product-card-button-details-link {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+
+}
+
+.product-card-button-details-link:hover {
+    color: white;
+    text-decoration: none;
+
+}
+
+.product-card-button-edit {
+  background-color: rgb(110, 193, 245);
+  border: 1px solid rgb(110, 193, 245);
+  margin-right: 10px;
+}
+
+.product-card-button-edit:hover {
+  background-color: rgba(165, 42, 42, 0.863);
+  margin-right: 10px;
+}
+
+.product-card-button-edit-link {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+
+}
+
+.product-card-button-edit-link:hover {
+  color: white;
+  text-decoration: none;
+
+}
+
+.product-card-button-delete {
+  background-color: red;
+  border: 1px solid red;
+  margin-right: 10px;
+}
+
+.product-card-button-delete:hover {
+  background-color: rgba(165, 42, 42, 0.863);
+  margin-right: 10px;
+}
+
+.product-card-button-delete-link {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+
+}
+
+.product-card-button-delete-link:hover {
+  color: white;
+  text-decoration: none;
+
+}

@@ -16,7 +16,7 @@ const SideNavigationMenu = (props) => {
 };
 
 SideNavigationMenu.propTypes = {
-    bodyCareType: string.isRequired,
+    title: string.isRequired,
     icon: object,
 }
 

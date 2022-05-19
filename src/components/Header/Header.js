@@ -2,6 +2,8 @@ import React from 'react';
 import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuthUserContext } from '../../contexts/AuthContext';
+import { useProductsContext } from '../../contexts/ProductsContext';
+import { getAll} from '../../services/productService';
 //import { signOutPage } from '../../services/authService';
 //import { useNavigate } from 'react-router';
 
@@ -10,6 +12,8 @@ import './Header.css';
 const Header = () => {
 
     const { user, logout } = useAuthUserContext();
+    const { products, setProducts, setProductsToDisplay } = useProductsContext();
+
     // const navigate = useNavigate()
     // const logoutHandler = async () => {
     //     try {
@@ -23,13 +27,18 @@ const Header = () => {
     //     }
     // };
 
+    const getAllHandler = () => {
+        console.log('Body getAll func');
+        getAll(products, setProducts, setProductsToDisplay);
+    }
+
     const loggedUser = (
         <>
             {user.uid === '2CLGcFqcCASXAdKXb0HHAz7neIj1'
                 ? <Link to="/create">Create</Link>
                 : ''}
             <Link to="/">Home</Link>
-            <Link to="/body">Body</Link>
+            <Link to="/body" onClick={getAllHandler}>Body</Link>
             <Link to="/foods">Foods</Link>
             <Link to="/nature">Nature</Link>
             <Link to="/logout" /*onClick={logoutHandler}*/>Logout</Link>
@@ -39,7 +48,7 @@ const Header = () => {
     const guest = (
         <>
             <Link to="/">Home</Link>
-            <Link to="/body">Body</Link>
+            <Link to="/body" onClick={getAllHandler}>Body</Link>
             <Link to="/foods">Foods</Link>
             <Link to="/nature">Nature</Link>
             <Link to="/login">Login</Link>
@@ -63,15 +72,6 @@ const Header = () => {
                             : guest
                         }
                     </Nav>
-                    <Form className="d-flex">
-                        <FormControl
-                            type="search"
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search"
-                        />
-                        <Button className='navigation-form-button' variant="outline-success">Search</Button>
-                    </Form>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

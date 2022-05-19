@@ -1,21 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import './Create.css';
-
-import { app, auth, storage, database } from '../../firebase';
-import { useState } from 'react';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { v4 } from 'uuid';
-import { writeProductData } from "../../services/productService";
 import { uploadImageHandler, createProductSubmitHandler } from "../../services/productService";
 
 const Create = () => {
     const [imageUrl, setImageUrl] = useState(null);
-    let [isUploaded, setIsUploaded] = useState(false)
-
-    //uploadImageHandler(imageUrl, setImageUrl, setIsUploaded);
-    //const { name, description, price, brand, careType, productType, skinType } = Object.fromEntries(new FormData(e.currentTarget));
-
-    //createProductSubmitHandler(imageUrl, setIsUploaded);
+    let [isUploaded, setIsUploaded] = useState(false);
 
     return (
         <section id="create-page" className="create create-section">
@@ -62,10 +51,10 @@ const Create = () => {
                             </select>
                         </span>
                     </p>
-                    <p className="field create-section-form-fieldset-p-careType">
-                        <label htmlFor="careType">Care type:</label>
+                    <p className="field create-section-form-fieldset-p-careAbout">
+                        <label htmlFor="careAbout">Care type:</label>
                         <span className="input">
-                            <select id="careType" name="careType">
+                            <select id="careAbout" name="careAbout">
                                 <option value="wholeBody">Whole body</option>
                                 <option value="face">Face</option>
                                 <option value="hair">Hair</option>
@@ -96,7 +85,7 @@ const Create = () => {
                             </select>
                         </span>
                     </p>
-                    <input className="button submit create-section-form-fieldset-button" type="submit" value="Add" />
+                    <input className="button submit create-section-form-fieldset-button" type="submit" disabled={!isUploaded} value="Add" />
                 </fieldset>
             </form>
         </section>

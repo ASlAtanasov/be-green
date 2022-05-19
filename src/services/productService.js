@@ -1,27 +1,17 @@
-import { app, auth, database, storage} from '../firebase';
-import { getDatabase, set, ref as databaseRef } from "firebase/database";
-import {  ref, uploadBytes, getDownloadURL, getStorage } from 'firebase/storage';
+import { database, storage } from '../firebase';
+import { set, ref as databaseRef, onValue } from "firebase/database";
+import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
-  
 
-
-export function writeProductData(name, description, imageUrl, price, brand, careType, productType, skinType) {
-  console.log('in func writeProductData')
-  console.log(name)
-  console.log(description)
-  console.log(imageUrl)
-  console.log(price)
-  console.log(brand)
-  console.log(careType)
-  console.log(productType)
-  console.log(skinType)
-  set(databaseRef(database, 'products/' + name + v4()), {
+export function writeProductData(name, description, imageUrl, price, brand, careAbout, productType, skinType) {
+  set(databaseRef(database, 'products/' + name), {
+    id: v4(),
     name,
     description,
     imageUrl,
     price,
     brand,
-    careType,
+    careAbout,
     productType,
     skinType
   });
@@ -29,16 +19,14 @@ export function writeProductData(name, description, imageUrl, price, brand, care
 
 export const uploadImageHandler = (imageUrl, setImageUrl, setIsUploaded) => (e) => {
   e.preventDefault();
-//console.log('prevented');
 
   if (imageUrl == null) {
     return;
   }
 
-  const imageRef = ref(storage, `images/${imageUrl.name + v4()}`)
-//console.log('imageRef:' + imageRef);
- 
-uploadBytes(imageRef, imageUrl)
+  const imageRef = storageRef(storage, `images/${imageUrl.name + v4()}`)
+
+  uploadBytes(imageRef, imageUrl)
     .then((response) => {
       alert('image Uploaded');
 
@@ -46,10 +34,8 @@ uploadBytes(imageRef, imageUrl)
 
       let imageName = metadata[0].name;
 
-      getDownloadURL(ref(storage, `/images/${imageName}`))
+      getDownloadURL(storageRef(storage, `/images/${imageName}`))
         .then((url) => {
-         // console.log(`url ${url}`)
-
           setImageUrl(url);
           setIsUploaded(true)
         });
@@ -61,20 +47,82 @@ uploadBytes(imageRef, imageUrl)
 
 export const createProductSubmitHandler = (imageUrl, setIsUploaded) => (e) => {
   e.preventDefault();
-  //console.log('prevented');
-  const { name, description, price, brand, careType, productType, skinType } = Object.fromEntries(new FormData(e.currentTarget));
-  //console.log('ímageUrl: ' + imageUrl);
-  
-  if  (imageUrl) {
-   // console.log('Name: ' + name)
-    writeProductData(name, description, imageUrl, price, brand, careType, productType, skinType);
+
+  const { name, description, price, brand, careAbout, productType, skinType } = Object.fromEntries(new FormData(e.currentTarget));
+
+  try {
+    writeProductData(name, description, imageUrl, price, brand, careAbout, productType, skinType);
     alert('Successful writing of product data');
+
     e.currentTarget.reset();
-    console.log('Form reseted');
     setIsUploaded(false);
-  } else {
-    alert('Error: Couldn\'t save data')
+  } catch (error) {
+    alert(error)
   }
-   
-  
 };
+
+let productsArray = [];
+
+export const getAll = (reference, setProductsToContext, setProductsToAnotherContext) => {
+
+  onValue(databaseRef(database, reference), (snapshot) => {
+    const productsData = snapshot.val();
+    Object.values(productsData).map((product) => {
+      productsArray = [...productsArray, product];
+    });
+
+    if (productsArray) {
+      setProductsToContext([...productsArray]);
+      setProductsToAnotherContext([...productsArray]);
+     // alert('Products in body are set')
+    } else {
+      console.log('There are no products to display')
+    }
+  });
+};
+
+export const filterItemsByCheckboxCriteria = (items, filterCheckedValues = [], setProductsToContext) => {
+  let filteredProducts = [];
+  if (filterCheckedValues.length === 0) {
+    setProductsToContext([...items]);
+  } else {
+    filterCheckedValues.map((filterValue) => {
+      let key = Object.keys(filterValue);
+      console.log('key: ' + key);
+
+      items.filter((item) => {
+        if (item[key].toLowerCase() === filterValue[key].toLowerCase() && filteredProducts.every((product) => product.id !== item.id)) {
+          filteredProducts = [...filteredProducts, item];
+          console.log('filteredProducts: ' + filteredProducts);
+        }
+      })
+    });
+    console.log('final filteredProducts: ' + filteredProducts);
+    alert('Successfull filtering')
+    setProductsToContext([...filteredProducts]);
+  }
+};
+
+export const searchItems = (items, searchedValue, setProductsToContext) => {
+  console.log(searchedValue);
+  let filteredItems = [];
+  if (searchedValue) {
+    items.map((item) => {
+      console.log(Object.values(item));
+      console.log(typeof (Object.values(item)));
+      Object.values(item).map((itemValue) => {
+        let value = itemValue.toString().toLowerCase();
+        if (value.includes(searchedValue.toLowerCase()) && filteredItems.every((product) => product.id !== item.id)) {
+          filteredItems = [...filteredItems, item];
+          console.log('filteredItems in searchItems: ' + filteredItems);
+        }
+      });
+    });
+    
+    console.log('final filteredItems in searchItems: ' + filteredItems);
+    //alert('Successfull filtering')
+    setProductsToContext([...filteredItems]);
+  } else {
+    setProductsToContext([...items]);
+  }
+}

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { string, arrayOf, object } from "prop-types";
-
+import { useFilterContext } from '../../contexts/FilterContext';
+import { transformOptionValue, checkboxIsCheckedHandler } from '../../services/commonServices';
 import "./MenuWithToggle.css";
 
 const MenuWithToggle = (props) => {
     const { label, options, icon } = props;
     const [expanded, setExpanded] = useState(false);
+    const { filterCheckedValues, setFilterCheckedValues } = useFilterContext();
 
-    const onClick = () => setExpanded(!expanded);
-
+    const onClick = () => setExpanded(!expanded);    
+  
     return (
         <div>
             <button type="button" className="sidebar-link" onClick={onClick}>
@@ -23,24 +25,32 @@ const MenuWithToggle = (props) => {
                 <div className="collapse__content collapse__content--collapsed">
                     <div>
                         <ul className="filter-section-list">
-
                             {
-                                options.map((option, idx) => (
-                                    <li key={option} className="">
-                                        <span className="checkbox">
-                                            <input type="checkbox" id={option} className="is-sr-only" />
-                                            <label htmlFor={option}>
-                                                {option}
-                                            </label>
-                                        </span>
-                                    </li>
-                                ))
+                                options.map((option, idx) => {
+                                    const [optionToUse, labelToUse] = transformOptionValue(option, label);
+                                    return (
+                                        <li key={optionToUse} className="">
+                                            <span className="checkbox">
+                                                <input
+                                                    type="checkbox"
+                                                    id={optionToUse}
+                                                    defaultValue={optionToUse}
+                                                    className="is-sr-only"
+                                                    data-label={labelToUse}
+                                                    onChange={checkboxIsCheckedHandler(filterCheckedValues, setFilterCheckedValues)} />
+                                                <label htmlFor={optionToUse}>
+                                                    {option}
+                                                </label>
+                                            </span>
+                                        </li>
+                                    )
+                                })
                             }
                         </ul>
+                        
                     </div>
                 </div>
-
-            </div>
+            </div>            
         </div>
     )
 }

@@ -94,23 +94,23 @@
     width: 100%;
  }
 
- .create-section-form-fieldset-p-careType {
+ .create-section-form-fieldset-p-careAbout {
     margin: 20px;
     display: flex;
 }
 
-.create-section-form-fieldset-p-careType label {
+.create-section-form-fieldset-p-careAbout label {
     margin-right: 20px;
     font-size: 18px;
     color: black;
     width: 100px;
 }
 
-.create-section-form-fieldset-p-careType span {
+.create-section-form-fieldset-p-careAbout span {
    flex-grow: 1;
 
 }
-.create-section-form-fieldset-p-careType select {
+.create-section-form-fieldset-p-careAbout select {
     width: 100%;
  }
 
