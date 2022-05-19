@@ -27,7 +27,7 @@ const Header = () => {
     //     }
     // };
 
-    const getAllHandler = () => {
+    const onClickGetAllHandler = () => {
         console.log('Body getAll func');
         getAll(products, setProducts, setProductsToDisplay);
     }
@@ -38,7 +38,7 @@ const Header = () => {
                 ? <Link to="/create">Create</Link>
                 : ''}
             <Link to="/">Home</Link>
-            <Link to="/body" onClick={getAllHandler}>Body</Link>
+            <Link to="/body" onClick={onClickGetAllHandler}>Body</Link>
             <Link to="/foods">Foods</Link>
             <Link to="/nature">Nature</Link>
             <Link to="/logout" /*onClick={logoutHandler}*/>Logout</Link>
@@ -48,7 +48,7 @@ const Header = () => {
     const guest = (
         <>
             <Link to="/">Home</Link>
-            <Link to="/body" onClick={getAllHandler}>Body</Link>
+            <Link to="/body" onClick={onClickGetAllHandler}>Body</Link>
             <Link to="/foods">Foods</Link>
             <Link to="/nature">Nature</Link>
             <Link to="/login">Login</Link>

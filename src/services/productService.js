@@ -72,6 +72,7 @@ export const getAll = (reference, setProductsToContext, setProductsToAnotherCont
     });
 
     if (productsArray) {
+      //console.log(JSON.stringify(productsArray, null, 4));
       setProductsToContext([...productsArray]);
       setProductsToAnotherContext([...productsArray]);
      // alert('Products in body are set')
@@ -88,12 +89,13 @@ export const filterItemsByCheckboxCriteria = (items, filterCheckedValues = [], s
   } else {
     filterCheckedValues.map((filterValue) => {
       let key = Object.keys(filterValue);
-      console.log('key: ' + key);
+      //console.log('key: ' + key);
 
       items.filter((item) => {
         if (item[key].toLowerCase() === filterValue[key].toLowerCase() && filteredProducts.every((product) => product.id !== item.id)) {
           filteredProducts = [...filteredProducts, item];
-          console.log('filteredProducts: ' + filteredProducts);
+          
+          console.log('filteredProducts: ' + JSON.stringify(filteredProducts, null, 4));
         }
       })
     });
@@ -114,12 +116,12 @@ export const searchItems = (items, searchedValue, setProductsToContext) => {
         let value = itemValue.toString().toLowerCase();
         if (value.includes(searchedValue.toLowerCase()) && filteredItems.every((product) => product.id !== item.id)) {
           filteredItems = [...filteredItems, item];
-          console.log('filteredItems in searchItems: ' + filteredItems);
+          console.log('filteredItems in searchItems: ' + JSON.stringify(filteredItems, null, 4));
         }
       });
     });
     
-    console.log('final filteredItems in searchItems: ' + filteredItems);
+    console.log('final filteredItems in searchItems: ' + JSON.stringify(filteredItems, null, 4));
     //alert('Successfull filtering')
     setProductsToContext([...filteredItems]);
   } else {

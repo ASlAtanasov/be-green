@@ -60,10 +60,10 @@
 }
 
 .create-section-form-fieldset-p-imageFile label {
-    margin-right: 20px;
+    margin-right: 52px;
     font-size: 18px;
     color: black;
-    width: 100px;
+    width: 15%;
 }
 
 .create-section-form-fieldset-p-imageFile span {
@@ -227,3 +227,41 @@
     color: white;
     font-weight: bold;
 }
+
+.image-choosen-file-text {
+    color: black;
+}
+
+span.input {
+    width: 335px;
+}
+
+span.input input {
+    width: 30%;
+    margin-right: 10px;
+}
+
+span.input button {
+    margin-top: 5px;
+    background: rgb(68, 192, 68);
+    border:1px solid rgb(68, 192, 68);
+    border-radius: 5px;
+    color: white;
+
+}
+span.input button:hover {
+    background: rgb(68, 192, 68);
+    background: rgba(165, 42, 42, 0.863);
+    color: white;
+    font-weight: bold;
+}
+
+.disabled,
+.disabled:hover {
+    background: grey;
+    color: black;
+}
+
+input[type='file'] {
+    color: transparent;
+  }

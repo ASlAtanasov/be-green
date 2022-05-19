@@ -26,12 +26,18 @@ const Create = () => {
                     <p className="field create-section-form-fieldset-p-imageFile">
                         <label htmlFor="imageFile">Image file:</label>
                         <span className="input">
-                            <input type="file" name="imageFile" id="imageFile" onChange={
-                                (e) => {
-                                    setImageUrl(e.currentTarget.files[0])
-                                    console.log('ImageUrl is set')
-                                }} />
-                            <button type="submit" onClick={uploadImageHandler(imageUrl, setImageUrl, setIsUploaded)} disabled={isUploaded}>Upload to firebase</button>
+                            <section>
+                                <input type="file" name="imageFile" id="imageFile" onChange={
+                                    (e) => {
+                                        setImageUrl(e.currentTarget.files[0])
+                                        console.log('ImageUrl is set')
+                                    }} />
+                                {imageUrl
+                                    ? <span className="image-choosen-file-text">{'Image file has been chosen!'}</span>
+                                    : <span></span>
+                                }
+                            </section>
+                            <button type="submit" onClick={uploadImageHandler(imageUrl, setImageUrl, setIsUploaded)} disabled={isUploaded}>Upload to server</button>
                         </span>
                     </p>
                     <p className="field create-section-form-fieldset-p-price">
@@ -85,7 +91,7 @@ const Create = () => {
                             </select>
                         </span>
                     </p>
-                    <input className="button submit create-section-form-fieldset-button" type="submit" disabled={!isUploaded} value="Add" />
+                    <input className={`button submit create-section-form-fieldset-button ${!isUploaded && 'disabled'}`} type="submit" disabled={!isUploaded} value="Add" />
                 </fieldset>
             </form>
         </section>
