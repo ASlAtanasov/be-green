@@ -82,10 +82,10 @@ export const getAll = (reference, setProductsToContext, setProductsToAnotherCont
   });
 };
 
-export const filterItemsByCheckboxCriteria = (items, filterCheckedValues = [], setProductsToContext) => {
+export const filterItemsByCheckboxCriteria = async (items, filterCheckedValues, setProductsToContext) => {
   let filteredProducts = [];
   if (filterCheckedValues.length === 0) {
-    setProductsToContext([...items]);
+    await setProductsToContext([...items]);
   } else {
     filterCheckedValues.map((filterValue) => {
       let key = Object.keys(filterValue);
@@ -101,7 +101,7 @@ export const filterItemsByCheckboxCriteria = (items, filterCheckedValues = [], s
     });
     console.log('final filteredProducts: ' + filteredProducts);
     alert('Successfull filtering')
-    setProductsToContext([...filteredProducts]);
+    await setProductsToContext([...filteredProducts]);
   }
 };
 

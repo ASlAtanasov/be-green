@@ -11,25 +11,29 @@ import { Form, FormControl, Button } from 'react-bootstrap';
 
 import { getAll, filterItemsByCheckboxCriteria, searchItems } from '../../services/productService';
 import { useFilterContext } from '../../contexts/FilterContext';
-import { log } from 'util';
+import { useModalContentContext } from '../../contexts/ModalContentContext';
+import ModalItemContent from '../ModalItemContent/ModalItemContent';
+import { transformOptionValue } from '../../services/commonServices';
 
 
-const BodyCareOptions = [{
-    title: 'Whole body',
-    icon: faPersonHalfDress,
-},
-{
-    title: 'Face',
-    icon: faFaceSmile,
-},
-{
-    title: 'Hair',
-    icon: faDroplet,
-},
-{
-    title: 'Hands',
-    icon: faHandHoldingHeart,
-}];
+const BodyCareOptions = [
+    {
+        title: 'Whole body',
+        icon: faPersonHalfDress,
+    },
+    {
+        title: 'Face',
+        icon: faFaceSmile,
+    },
+    {
+        title: 'Hair',
+        icon: faDroplet,
+    },
+    {
+        title: 'Hands',
+        icon: faHandHoldingHeart,
+    }
+];
 
 const CareAboutOptions = ['Whole body', 'Face', 'Hair', 'Hands'];
 const BrandsOptions = ['Avon', 'Garnier', 'Loreal', 'Oriflame'];
@@ -39,12 +43,12 @@ const SkinTypeOptions = ['Dry', 'Moist', 'Normal'];
 const Body = () => {
     const { user } = useAuthUserContext();
     const { products, setProducts, productsToDisplay, setProductsToDisplay } = useProductsContext();
-    const { filterCheckedValues } = useFilterContext();
+    let { filterCheckedValues, setFilterCheckedValues } = useFilterContext();
+    const { itemModalContent, setItemModalContent } = useModalContentContext();
     const [searchedValue, setSearchedValue] = useState('');
-
-    //console.log('products: ' + products);
-    //console.log('productsToDisplay: ' + productsToDisplay);
-
+    const [showModal, setShowModal] = useState(false);
+    const [filterValue, setFilterValue] = useState([]);
+    
 
     const productsItems = [];
 
@@ -57,8 +61,6 @@ const Body = () => {
     }, []);
 
     const onClickFilterHandler = () => {
-        //console.log('products: ' + products);
-        //console.log('productsToDisplay: ' + productsToDisplay);
 
         filterItemsByCheckboxCriteria(products, filterCheckedValues, setProductsToDisplay);
     }
@@ -75,6 +77,21 @@ const Body = () => {
         searchItems(products, searchedValue, setProductsToDisplay);
     }
 
+    const onClickBodyCareHandler = (opt) => async (e) => {
+        e.preventDefault();
+        console.log('option received: ' + opt.title);
+
+        const [option, label] = transformOptionValue(opt.title, 'careAbout');
+        console.log('label: ' + label);
+        console.log('option: ' + option);
+
+        setFilterValue([{ [label]: option }]) 
+    }
+
+     useEffect(() => {
+         filterItemsByCheckboxCriteria(products, filterValue, setProductsToDisplay)
+     }, [filterValue]);
+
     return (
         <div className="body-container">
             <div className="sidebar">
@@ -83,7 +100,7 @@ const Body = () => {
                     <div className="side-menu">
 
                         {BodyCareOptions.map((opt) => (
-                            <SideNavigationLink key={v4()} title={opt.title} icon={opt.icon} />
+                            <SideNavigationLink key={v4()} onClick={onClickBodyCareHandler(opt)}  title={opt.title} icon={opt.icon} />
                         ))}
 
                     </div>
@@ -113,7 +130,7 @@ const Body = () => {
                         </>)
                         : <span className="logo">Welcome!</span>
                     }
-            <Form className="d-flex">
+                    <Form className="d-flex">
                         <FormControl
                             type="text"
                             placeholder="Search"
@@ -129,10 +146,11 @@ const Body = () => {
                     <div className='products-list'>
 
                         {productsToDisplay.map((product) => (
-                            <ProductCard key={v4()} name={product.name} description={product.description} imageUrl={product.imageUrl} price={product.price} />
+                            <ProductCard key={v4()} name={product.name} description={product.description} imageUrl={product.imageUrl} price={product.price} item={product} setItem={setItemModalContent} showModal={showModal} setShowModal={setShowModal} />
                         ))}
 
                     </div>
+                    <ModalItemContent className={`${showModal && 'modal-active'}`} show={showModal} item={itemModalContent} onHide={() => setShowModal(false)} />
                 </div>
             </div>
         </div>

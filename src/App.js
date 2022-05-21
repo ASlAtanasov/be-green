@@ -14,6 +14,7 @@ import Body from './components/Body';
 import Create from './components/Create'
 import ErrorPage from './components/ErrorPage';
 import { FilterContextProvider } from './contexts/FilterContext';
+import { ModalContentContextProvider, useModalContentContext } from './contexts/ModalContentContext';
 
 
 function App() {
@@ -21,27 +22,31 @@ function App() {
     <AuthContextProvider>
       <ProductsContextProvider>
         <FilterContextProvider>
-          <div className="App">
-            <Header />
+          <ModalContentContextProvider>
+            
+              <div className="App">
+                <Header />
 
-            <main id="site-content">
-              <Routes>
-                <Route exact path='/' element={<Home />} />
-                <Route path='/home' element={<Home />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/logout' element={<Logout />} />
-                <Route path='/body' element={<Body />} />
-                <Route path='/create' element={<Create />} />
-                <Route path='*' element={<ErrorPage />} />
+                <main id="site-content">
+                  <Routes>
+                    <Route exact path='/' element={<Home />} />
+                    <Route path='/home' element={<Home />} />
+                    <Route path='/register' element={<Register />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/logout' element={<Logout />} />
+                    <Route path='/body' element={<Body />} />
+                    <Route path='/create' element={<Create />} />
+                    <Route path='*' element={<ErrorPage />} />
 
-              </Routes>
-            </main>
+                  </Routes>
+                </main>
 
-            <footer id="site-footer">
-              <p>BE GREEN</p>
-            </footer>
-          </div>
+                <footer id="site-footer">
+                  <p>BE GREEN</p>
+                </footer>
+              </div>
+            
+          </ModalContentContextProvider>
         </FilterContextProvider>
       </ProductsContextProvider>
     </AuthContextProvider>

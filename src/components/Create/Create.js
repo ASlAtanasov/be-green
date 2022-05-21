@@ -43,7 +43,7 @@ const Create = () => {
                     <p className="field create-section-form-fieldset-p-price">
                         <label htmlFor="price">Price:</label>
                         <span className="input">
-                            <input type="number" name="price" id="price" placeholder="Price" />
+                            <input type="text" name="price" id="price" placeholder="Price" />
                         </span>
                     </p>
                     <p className="field create-section-form-fieldset-p-brand">

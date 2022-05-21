@@ -2,6 +2,15 @@ export const transformOptionValue = (option, label) => {
     if (option === 'Whole body') {
         option = 'wholeBody';
     }
+    if (option === 'Face') {
+        option = 'face';
+    }
+    if (option === 'Hair') {
+        option = 'hair';
+    }
+    if (option === 'Hands') {
+        option = 'hands';
+    }
     if (label === 'Care about') {
         label = 'careAbout';
     }

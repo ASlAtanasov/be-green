@@ -1,0 +1,48 @@
+.modal-header {
+  background: #cbf8e5dc;
+}
+
+.modal-body-section {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+}
+
+.modal-image {
+  display: flex;
+}
+
+.modal-image img {
+  width: 310px;
+  height: 310px;
+  padding-right: 20px;
+margin: auto 10px
+}
+
+.modal-item-desctription {
+  height: 100%;
+  width: 50%;
+}
+
+.modal-item-desctription h4 {
+  color: black;
+  margin-bottom: 1.5rem;
+  text-indent: 30px;
+}
+
+section.modal-item-description > p {
+  color:black;
+
+}
+
+section.modal-item-description > p:nth-child(1) {
+    text-indent: 30px;
+}
+
+.modal-active {
+  backdrop-filter: blur(10px);
+} 
