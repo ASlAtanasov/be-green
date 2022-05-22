@@ -8,20 +8,15 @@ const Logout = () => {
     const { logout } = useAuthUserContext();
 
     useEffect(() => {
-        // authService.signOutPage()
-        //     .then(() => {
-        //         localStorage.removeItem('user');
-                 logout();
-        //         navigate('/');
-        //         alert('You signed out successfully');
-        //         //return <Navigate to='home' />;
-        //     })
-        //     .catch((error) => {
-        //         alert(error.message)
-        //     });
+        try {
+            logout();
+        } catch (error) {
+          alert(error);  
+        }
+
     }, []);
 
-    
+
 };
 
 export default Logout;

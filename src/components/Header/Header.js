@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuthUserContext } from '../../contexts/AuthContext';
@@ -11,7 +11,7 @@ import './Header.css';
 
 const Header = () => {
 
-    const { user, logout } = useAuthUserContext();
+    const { user, setUser, logout } = useAuthUserContext();
     const { products, setProducts, setProductsToDisplay } = useProductsContext();
 
     // const navigate = useNavigate()
@@ -27,6 +27,18 @@ const Header = () => {
     //     }
     // };
 
+    useEffect(() => {
+        let currentUser = JSON.parse(localStorage.getItem('user'));
+            console.log('currentUser in Header useEffect: ' + currentUser);
+            console.log('currentUser id Header useEffect: ' + currentUser.uid);
+            console.log('currentUser email Header useEffect: ' + currentUser.email);
+        
+            if(currentUser) {
+                setUser(currentUser);
+            }
+   
+        }, []);
+
     const onClickGetAllHandler = () => {
         console.log('Body getAll func');
         getAll(products, setProducts, setProductsToDisplay);
@@ -34,7 +46,7 @@ const Header = () => {
 
     const loggedUser = (
         <>
-            {user.uid === '2CLGcFqcCASXAdKXb0HHAz7neIj1'
+            {user && user.uid && user.uid === '2CLGcFqcCASXAdKXb0HHAz7neIj1'
                 ? <Link to="/create">Create</Link>
                 : ''}
             <Link to="/">Home</Link>

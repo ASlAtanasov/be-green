@@ -1,29 +1,28 @@
-import React from "react";
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { signUp, signIn, signOutPage } from '../services/authService';
 import { useNavigate } from 'react-router';
 
 const AuthContext = createContext();
 
-const initialState = '';
+const initialState = null;
 
 export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(initialState);
     const navigate = useNavigate();
 
-    const login = async (email, password) => {
-        try {
-            const response = await signIn(email, password);
-            const userToSave = { email, accessToken: response.user.accessToken, uid: response.user.uid }
+    // const login = async (email, password) => {
+    //     try {
+    //         const response = await signIn(email, password);
+    //         const userToSave = { email, accessToken: response.user.accessToken, uid: response.user.uid }
 
-            localStorage.setItem('user', JSON.stringify(userToSave));
-            setUser(userToSave);
+    //         localStorage.setItem('user', JSON.stringify(userToSave));
+    //         setUser(userToSave);
 
-            return userToSave;
-        } catch (error) {
-            alert(error.message);
-        }
-    };
+    //         return userToSave;
+    //     } catch (error) {
+    //         alert(error.message);
+    //     }
+    // };
 
     const register = async (email, password) => {
         try {
@@ -60,7 +59,7 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, login, register, logout }}>
+        <AuthContext.Provider value={{ user, setUser, register, logout }}>
             {children}
         </AuthContext.Provider>
     )

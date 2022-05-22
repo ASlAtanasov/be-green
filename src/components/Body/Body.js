@@ -15,7 +15,6 @@ import { useModalContentContext } from '../../contexts/ModalContentContext';
 import ModalItemContent from '../ModalItemContent/ModalItemContent';
 import { transformOptionValue } from '../../services/commonServices';
 
-
 const BodyCareOptions = [
     {
         title: 'Whole body',
@@ -47,21 +46,40 @@ const Body = () => {
     const { itemModalContent, setItemModalContent } = useModalContentContext();
     const [searchedValue, setSearchedValue] = useState('');
     const [showModal, setShowModal] = useState(false);
-    const [filterValue, setFilterValue] = useState([]);
-    
+    const [filterValue, setFilterValue] = useState([]); 
+    console.log(111, user);
 
+   
     const productsItems = [];
 
+    // useEffect(() => {
+    //     try {
+            
+    //         getAll('products', setProducts, setProductsToDisplay);
+    //     } catch (error) {
+    //         alert(error);
+    //     }
+    //     console.log('user in body: ' + user);
+    // }, [user]);
+    
     useEffect(() => {
         try {
+
+            // currentUser = user;
+            // currentUser = JSON.parse(localStorage.getItem('user'));
+            // console.log('currentUser in Body useEffect: ' + currentUser);
+            // console.log('currentUser id Body useEffect: ' + currentUser.uid);
+            // console.log('currentUser email Body useEffect: ' + currentUser.email);
+            
             getAll('products', setProducts, setProductsToDisplay);
+            console.log('user in Body useEffect: ' + user);
         } catch (error) {
             alert(error);
         }
     }, []);
 
-    const onClickFilterHandler = () => {
 
+    const onClickFilterHandler = () => {
         filterItemsByCheckboxCriteria(products, filterCheckedValues, setProductsToDisplay);
     }
 
@@ -146,7 +164,17 @@ const Body = () => {
                     <div className='products-list'>
 
                         {productsToDisplay.map((product) => (
-                            <ProductCard key={v4()} name={product.name} description={product.description} imageUrl={product.imageUrl} price={product.price} item={product} setItem={setItemModalContent} showModal={showModal} setShowModal={setShowModal} />
+                            <ProductCard 
+                            key={v4()} 
+                            name={product.name} 
+                            description={product.description} 
+                            imageUrl={product.imageUrl} 
+                            price={product.price} 
+                            item={product} 
+                            setItem={setItemModalContent} 
+                            showModal={showModal} 
+                            setShowModal={setShowModal}
+                             />
                         ))}
 
                     </div>
