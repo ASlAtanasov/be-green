@@ -1,0 +1,130 @@
+.ordered-product {
+  border-left: 1px solid rgb(68, 192, 68);
+  border-top: 1px solid rgb(68, 192, 68);
+  border-right: 1px solid rgb(68, 192, 68);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  font-size: 22px;
+}
+
+.ordered-product:last-child {
+  border-bottom: 1px solid rgb(68, 192, 68);
+  }
+
+  /* .ordered-product:nth-child(2) {
+    border-top: 1px solid rgb(68, 192, 68);
+    } */
+
+.ordered-product-image {
+  width: 5%;
+  border: none;
+
+}
+
+.ordered-product-image img {
+  width: 73px;
+  height: 63px;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+}
+
+.ordered-product-data {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  border: none;
+}
+
+.ordered-product-data-name {
+  width: 50%;
+  margin: 0px;
+  padding: 5px;
+  color: black;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.ordered-product-data-name span {
+  width: 100%;
+  margin: 0px;
+  color: black;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  
+}
+
+.ordered-product-data-price {
+  color: #000;
+  width: 20%;
+  margin: 0px;
+  padding: 5px 5px 5px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.ordered-product-data-quantity {
+  width: 15%;
+  margin: 0px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ordered-product-data-quantity label {
+  width: 70%;
+  color: black;
+  text-align: end;
+  padding-right: 10px;
+}
+
+.ordered-product-data-quantity input {
+  width: 50px;
+  text-align: center;
+}
+
+.ordered-product-data-button-close {
+  width: 15%;
+  margin: 0px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.ordered-product-data-button-close label {
+  width: 70%;
+  color: black;
+  text-align: end;
+  padding-right: 10px;
+}
+
+.ordered-product-data-button-close button {
+  width: 50px;
+  border: none;
+  background: white;
+  padding: 8px;
+  ;
+}
+
+.ordered-product-data-button-close button svg {
+  height: 80%;
+  width: 65%;
+  padding: 0px;
+  border: none;
+  background: none;
+}
+
+.ordered-product-data-button-close button svg:hover {
+  fill: grey;
+}
