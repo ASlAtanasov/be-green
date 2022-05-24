@@ -42,24 +42,24 @@ export const AuthContextProvider = ({ children }) => {
         }
     }
 
-    const logout = () => {
-        signOutPage()
-            .then(() => {
-                localStorage.removeItem('user');
+    // const logout = () => {
+    //     signOutPage()
+    //         .then(() => {
+    //             localStorage.removeItem('user');
                 
-                navigate('/');
-                //return <Navigate to='home' />;
-               setUser(initialState);
-                alert('You signed out successfully');
-            })
-            .catch((error) => {
-                alert(error.message)
-            });
-        console.log(user);
-    }
+    //             navigate('/');
+    //             //return <Navigate to='home' />;
+    //            setUser(initialState);
+    //             alert('You signed out successfully');
+    //         })
+    //         .catch((error) => {
+    //             alert(error.message)
+    //         });
+    //     console.log(user);
+    // }
 
     return (
-        <AuthContext.Provider value={{ user, setUser, register, logout }}>
+        <AuthContext.Provider value={{ user, setUser, register }}>
             {children}
         </AuthContext.Provider>
     )

@@ -11,11 +11,12 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Body from './components/Body';
-import Create from './components/Create'
+import Create from './components/Create';
+import Cart from './components/Cart';
 import ErrorPage from './components/ErrorPage';
 import { FilterContextProvider } from './contexts/FilterContext';
-import { ModalContentContextProvider, useModalContentContext } from './contexts/ModalContentContext';
-
+import { ModalContentContextProvider } from './contexts/ModalContentContext';
+import { OrderedProductsContextProvider } from './contexts/OrderedProductsContext';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
       <ProductsContextProvider>
         <FilterContextProvider>
           <ModalContentContextProvider>
-            
+            <OrderedProductsContextProvider>
+
               <div className="App">
                 <Header />
 
@@ -36,6 +38,7 @@ function App() {
                     <Route path='/logout' element={<Logout />} />
                     <Route path='/body' element={<Body />} />
                     <Route path='/create' element={<Create />} />
+                    <Route path='/cart' element={<Cart />} />
                     <Route path='*' element={<ErrorPage />} />
 
                   </Routes>
@@ -45,7 +48,8 @@ function App() {
                   <p>BE GREEN</p>
                 </footer>
               </div>
-            
+              
+            </OrderedProductsContextProvider>
           </ModalContentContextProvider>
         </FilterContextProvider>
       </ProductsContextProvider>

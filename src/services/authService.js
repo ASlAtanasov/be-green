@@ -7,6 +7,7 @@ import { app, auth, database } from '../firebase';
 import { useNavigate } from 'react-router';
 
 
+
 // const firebaseConfig = {
 //   apiKey: "AIzaSyCzFJpEyukhF5i9lVtKR3vExLeUm-fwVqw",
 //   authDomain: "be-green-163a0.firebaseapp.com",
@@ -62,8 +63,23 @@ export const login = async (email, password, setUser) => {
   }
 };
 
-export function signOutPage() {
-  return signOut(auth);
+// export function signOutPage() {
+//   return signOut(auth);
+// }
+
+export const logout = (setUser, navigate, initialState) => {
+  signOut(auth)
+      .then(() => {
+          localStorage.removeItem('user');
+          
+          navigate('/');
+          //return <Navigate to='home' />;
+         setUser(initialState);
+          alert('You signed out successfully');
+      })
+      .catch((error) => {
+          alert(error.message)
+      });
 }
 
 export function saveUserData(userId, country, city, address, postalCode) {
