@@ -14,6 +14,7 @@ import { useFilterContext } from '../../contexts/FilterContext';
 import { useModalContentContext } from '../../contexts/ModalContentContext';
 import ModalItemContent from '../ModalItemContent/ModalItemContent';
 import { transformOptionValue } from '../../services/commonServices';
+import { useOrderedProductsContext } from '../../contexts/OrderedProductsContext';
 
 const BodyCareOptions = [
     {
@@ -46,38 +47,26 @@ const Body = () => {
     const { itemModalContent, setItemModalContent } = useModalContentContext();
     const [searchedValue, setSearchedValue] = useState('');
     const [showModal, setShowModal] = useState(false);
-    const [filterValue, setFilterValue] = useState([]); 
-    console.log(111, user);
+    const [filterValue, setFilterValue] = useState([]);
+    const {orderedProducts, setOrderedProducts} = useOrderedProductsContext();
 
-   
     const productsItems = [];
 
-    // useEffect(() => {
-    //     try {
-            
-    //         getAll('products', setProducts, setProductsToDisplay);
-    //     } catch (error) {
-    //         alert(error);
-    //     }
-    //     console.log('user in body: ' + user);
-    // }, [user]);
-    
     useEffect(() => {
         try {
-
-            // currentUser = user;
-            // currentUser = JSON.parse(localStorage.getItem('user'));
-            // console.log('currentUser in Body useEffect: ' + currentUser);
-            // console.log('currentUser id Body useEffect: ' + currentUser.uid);
-            // console.log('currentUser email Body useEffect: ' + currentUser.email);
-            
             getAll('products', setProducts, setProductsToDisplay);
-            console.log('user in Body useEffect: ' + user);
+
+            console.log('orderedProducts in Body useEffect: ' + orderedProducts);
+            
+            //let orderedProductsInLocalstorage = JSON.parse(localStorage.getItem('orderedProducts'));
+
+            // if (orderedProductsInLocalstorage) {
+            //     setOrderedProducts(orderedProductsInLocalstorage)
+            // }
         } catch (error) {
             alert(error);
         }
     }, []);
-
 
     const onClickFilterHandler = () => {
         filterItemsByCheckboxCriteria(products, filterCheckedValues, setProductsToDisplay);
@@ -103,12 +92,12 @@ const Body = () => {
         console.log('label: ' + label);
         console.log('option: ' + option);
 
-        setFilterValue([{ [label]: option }]) 
+        setFilterValue([{ [label]: option }])
     }
 
-     useEffect(() => {
-         filterItemsByCheckboxCriteria(products, filterValue, setProductsToDisplay)
-     }, [filterValue]);
+    useEffect(() => {
+        filterItemsByCheckboxCriteria(products, filterValue, setProductsToDisplay)
+    }, [filterValue]);
 
     return (
         <div className="body-container">
@@ -118,7 +107,7 @@ const Body = () => {
                     <div className="side-menu">
 
                         {BodyCareOptions.map((opt) => (
-                            <SideNavigationLink key={v4()} onClick={onClickBodyCareHandler(opt)}  title={opt.title} icon={opt.icon} />
+                            <SideNavigationLink key={v4()} onClick={onClickBodyCareHandler(opt)} title={opt.title} icon={opt.icon} />
                         ))}
 
                     </div>
@@ -164,17 +153,17 @@ const Body = () => {
                     <div className='products-list'>
 
                         {productsToDisplay.map((product) => (
-                            <ProductCard 
-                            key={v4()} 
-                            name={product.name} 
-                            description={product.description} 
-                            imageUrl={product.imageUrl} 
-                            price={product.price} 
-                            item={product} 
-                            setItem={setItemModalContent} 
-                            showModal={showModal} 
-                            setShowModal={setShowModal}
-                             />
+                            <ProductCard
+                                key={v4()}
+                                name={product.name}
+                                description={product.description}
+                                imageUrl={product.imageUrl}
+                                price={product.price}
+                                item={product}
+                                setItem={setItemModalContent}
+                                showModal={showModal}
+                                setShowModal={setShowModal}
+                            />
                         ))}
 
                     </div>
