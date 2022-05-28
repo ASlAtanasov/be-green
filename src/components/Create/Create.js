@@ -8,7 +8,7 @@ const Create = () => {
 
     return (
         <section id="create-page" className="create create-section">
-            <form id="create-form" className='create-section-form' method="POST" onSubmit={createProductSubmitHandler(imageUrl, setIsUploaded)}>
+            <form id="create-form" className='create-section-form' method="POST" onSubmit={createProductSubmitHandler(imageUrl, setIsUploaded, setImageUrl)}>
                 <fieldset>
                     <legend>Add new product</legend>
                     <p className="field create-section-form-fieldset-p-name">
@@ -32,12 +32,16 @@ const Create = () => {
                                         setImageUrl(e.currentTarget.files[0])
                                         console.log('ImageUrl is set')
                                     }} />
-                                {imageUrl
+                                {/* {imageUrl
                                     ? <span className="image-choosen-file-text">{'Image file has been chosen!'}</span>
                                     : <span></span>
-                                }
+                                } */}
+
+                                {!imageUrl && <span></span>}
+                                {imageUrl && !isUploaded && <span className="image-choosen-file-text">{'Image file has been chosen!'}</span>}
+                                {imageUrl && isUploaded && <span className="image-choosen-file-text">{'Image file has been uploaded!'}</span>}
                             </section>
-                            <button type="submit" onClick={uploadImageHandler(imageUrl, setImageUrl, setIsUploaded)} disabled={isUploaded}>Upload to server</button>
+                            <button className={`${isUploaded && 'disabled'}`} type="submit" onClick={uploadImageHandler(imageUrl, setImageUrl, setIsUploaded)}>Upload to server</button>
                         </span>
                     </p>
                     <p className="field create-section-form-fieldset-p-price">

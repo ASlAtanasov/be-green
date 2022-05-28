@@ -262,6 +262,13 @@ span.input button:hover {
     color: black;
 }
 
+span.input button.disabled,
+span.input button.disabled:hover {
+    background: grey;
+    color: black;
+    font-weight: 200;
+}
+
 input[type='file'] {
     color: transparent;
   }
