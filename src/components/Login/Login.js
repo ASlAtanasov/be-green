@@ -39,6 +39,7 @@ const Login = () => {
                     <input className="button submit login-section-form-fieldset-button" type="submit" value="Login" />
                 </fieldset>
             </form>
+            <p className='login-form-redirect-p'>If you don't have an account you can sign up <a className='login-view-button-redirect-p-a' type='button' href={'/register'}>here</a>!</p>
         </section>
     );
 }

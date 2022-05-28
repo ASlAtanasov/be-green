@@ -1,6 +1,6 @@
 .login-section-form {
     max-width: 500px;
-    margin: 80px auto 400px auto;
+    margin: 80px auto 30px auto;
     border: 2px solid black;
     padding-bottom: 20px;
 }
@@ -34,7 +34,7 @@
 
 .login-section-form-fieldset-button {
     padding: 5px 10px;
-    background: rgb(68, 192, 68);;
+    background: rgb(68, 192, 68);
     font-weight: bold;
     margin-left: 20px;
     font-size: 18px;
@@ -44,4 +44,23 @@
     background: rgba(165, 42, 42, 0.863);
     color: white;
     font-weight: bold;
+}
+
+.login-form-redirect-p {
+max-width: 500px;
+margin: 30px auto 400px auto;
+border: 2px solid black;
+padding-bottom: 20px;
+color: black;
+border: none;
+text-align: center;
+font-size: 18px;
+}
+
+.login-view-button-redirect-p-a {
+    color: rgb(68, 192, 68);
+}
+
+.login-view-button-redirect-p-a:hover {
+    color: rgb(199, 2, 2);
 }
