@@ -43,6 +43,25 @@
     color: black;
 }
 
+.register-section-form-fieldset-p-first-name {
+    margin: 20px;
+}
+
+.register-section-form-fieldset-p-first-name label {
+    margin-right: 20px;
+    font-size: 18px;
+    color: black;
+}
+.register-section-form-fieldset-p-last-name {
+    margin: 20px;
+}
+
+.register-section-form-fieldset-p-last-name label {
+    margin-right: 20px;
+    font-size: 18px;
+    color: black;
+}
+
 .register-section-form-fieldset-p-phone {
     margin: 20px;
 }

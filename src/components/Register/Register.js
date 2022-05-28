@@ -3,17 +3,25 @@ import { useNavigate } from 'react-router';
 import './Register.css';
 
 import { useAuthUserContext } from '../../contexts/AuthContext';
-import { saveUserData } from '../../services/authService';
+import { useOrderedProductsContext } from '../../contexts/OrderedProductsContext';
+import { register } from '../../services/authService';
 
 const Register = () => {
-    let navigate = useNavigate();
-    const { register } = useAuthUserContext();
+    const navigate = useNavigate();
+    const { setUser } = useAuthUserContext();
+    const {orderedProducts} = useOrderedProductsContext();
 
     const registerSubmitHandler = async (e) => {
         e.preventDefault();
 
-        const { email, password, repeatPassword, country, city, address, postalCode } = Object.fromEntries(new FormData(e.currentTarget));
+        const { email, password, repeatPassword, firstName, lastName, country, city, address, postalCode } = Object.fromEntries(new FormData(e.currentTarget));
 
+        if(email == '' || password == '' || repeatPassword == '' || firstName == '' || lastName == '' || country == '' || city == '' ||
+        address == '' || postalCode == '') {
+            alert('You must fill all fields!')
+            return;
+        }
+        
         if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
             alert('You have entered an invalid email address!')
             return;
@@ -35,23 +43,12 @@ const Register = () => {
         }
 
         try {
-            let user = await register(email, password);
-
-            if (user) {
-                saveUserData(user.uid, country, city, address, postalCode)
-
-                navigate('/home');
-            }
-        } catch (error) {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-
-            alert(`${errorCode}: ${errorMessage}`);
+           await register(email, password, firstName, lastName, country, city, address, postalCode, orderedProducts, navigate, setUser); 
+        } catch (error) {            
+            alert(`${error.code}: ${error.message}`);
         };
 
     };
-
-
 
     return (
         <section id="register-page" className="register register-section">
@@ -59,21 +56,33 @@ const Register = () => {
                 <fieldset>
                     <legend>Register Form</legend>
                     <p className="field register-section-form-fieldset-p-email">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">Email:</label>
                         <span className="input">
                             <input type="text" name="email" id="email" placeholder="Email" />
                         </span>
                     </p>
                     <p className="field register-section-form-fieldset-p-password">
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password">Password:</label>
                         <span className="input">
                             <input type="password" name="password" id="password" placeholder="Password" />
                         </span>
                     </p>
                     <p className="field register-section-form-fieldset-p-repeat-password">
-                        <label htmlFor="repeat-pass">Repeat Password</label>
+                        <label htmlFor="repeat-pass">Repeat Password:</label>
                         <span className="input">
                             <input type="password" name="repeatPassword" id="repeat-pass" placeholder="Repeat Password" />
+                        </span>
+                    </p>
+                    <p className="field register-section-form-fieldset-p-first-name">
+                        <label htmlFor="first-name">First name:</label>
+                        <span className="input">
+                            <input type="text" name="firstName" id="first-name" placeholder="First name" />
+                        </span>
+                    </p>
+                    <p className="field register-section-form-fieldset-p-last-name">
+                        <label htmlFor="last-name">Last name:</label>
+                        <span className="input">
+                            <input type="text" name="lastName" id="last-name" placeholder="Last name" />
                         </span>
                     </p>
                     <p className="field register-section-form-fieldset-p-phone">
