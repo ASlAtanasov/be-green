@@ -38,19 +38,22 @@ const Header = () => {
     useEffect(() => {
         let currentUser = JSON.parse(localStorage.getItem('user'));
         let orderedProductsInLocalstorage = JSON.parse(localStorage.getItem('orderedProducts'));
-        console.log('orderedProducts in Header useEffect: ' + orderedProducts);
+        
         if (currentUser) {
             setUser(currentUser);
         }
-        if(orderedProductsInLocalstorage) {
-           setOrderedProducts([...orderedProductsInLocalstorage]);
+        if (orderedProductsInLocalstorage) {
+            setOrderedProducts([...orderedProductsInLocalstorage]);
         }
     }, []);
 
     const loggedUser = (
         <>
             {user?.uid === '2CLGcFqcCASXAdKXb0HHAz7neIj1'
-                ? <Link to="/create">Create</Link>
+                ? <>
+                    <Link to="/orders">Orders</Link>
+                    <Link to="/create">Create</Link>
+                  </>
                 : ''}
             <Link to="/">Home</Link>
             <Link to="/body">Body</Link>

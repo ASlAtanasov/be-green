@@ -1,37 +1,37 @@
 import React, { useState } from "react";
-import './Create.css';
-import { uploadImage, createProduct } from "../../services/productService";
+import './Edit.css';
+import { uploadImage } from "../../services/productService";
 
-const Create = () => {
+const Edit = () => {
     const [imageUrl, setImageUrl] = useState(null);
     let [isUploaded, setIsUploaded] = useState(false);
 
-    const createProductSubmitHandler = () => {       
-        createProduct(imageUrl, setIsUploaded, setImageUrl);
+    const editProductSubmitHandler = () => {
+
     };
 
     const uploadImageHandler = () => {
         uploadImage(imageUrl, setImageUrl, setIsUploaded);
-    };
+    }
 
     return (
-        <section id="create-page" className="create create-section">
-            <form id="create-form" className='create-section-form' method="POST" onSubmit={createProductSubmitHandler}>
+        <section id="edit-page" className="edit edit-section">
+            <form id="edit-form" className='edit-section-form' method="POST" onSubmit={editProductSubmitHandler}>
                 <fieldset>
-                    <legend>Add new product</legend>
-                    <p className="field create-section-form-fieldset-p-name">
+                    <legend>Edit current product</legend>
+                    <p className="field edit-section-form-fieldset-p-name">
                         <label htmlFor="name">Name:</label>
                         <span className="input">
                             <input type="text" name="name" id="name" placeholder="Name" />
                         </span>
                     </p>
-                    <p className="field create-section-form-fieldset-p-description">
+                    <p className="field edit-section-form-fieldset-p-description">
                         <label htmlFor="description">Description:</label>
                         <span className="input">
                             <textarea name="description" id="description" placeholder="Description" />
                         </span>
                     </p>
-                    <p className="field create-section-form-fieldset-p-imageFile">
+                    <p className="field edit-section-form-fieldset-p-imageFile">
                         <label htmlFor="imageFile">Image file:</label>
                         <span className="input">
                             <section>
@@ -39,7 +39,7 @@ const Create = () => {
                                     (e) => {
                                         setImageUrl(e.currentTarget.files[0])
                                         console.log('ImageUrl is set')
-                                    }} />                               
+                                    }} />  
                                 {!imageUrl && <span></span>}
                                 {imageUrl && !isUploaded && <span className="image-choosen-file-text">{'Image file has been chosen!'}</span>}
                                 {imageUrl && isUploaded && <span className="image-choosen-file-text">{'Image file has been uploaded!'}</span>}
@@ -47,13 +47,13 @@ const Create = () => {
                             <button className={`${isUploaded && 'disabled'}`} type="submit" onClick={uploadImageHandler}>Upload to server</button>
                         </span>
                     </p>
-                    <p className="field create-section-form-fieldset-p-price">
+                    <p className="field edit-section-form-fieldset-p-price">
                         <label htmlFor="price">Price:</label>
                         <span className="input">
                             <input type="text" name="price" id="price" placeholder="Price" />
                         </span>
                     </p>
-                    <p className="field create-section-form-fieldset-p-brand">
+                    <p className="field edit-section-form-fieldset-p-brand">
                         <label htmlFor="brand">Brand:</label>
                         <span className="input">
                             <select id="brand" name="brand">
@@ -64,7 +64,7 @@ const Create = () => {
                             </select>
                         </span>
                     </p>
-                    <p className="field create-section-form-fieldset-p-careAbout">
+                    <p className="field edit-section-form-fieldset-p-careAbout">
                         <label htmlFor="careAbout">Care type:</label>
                         <span className="input">
                             <select id="careAbout" name="careAbout">
@@ -75,7 +75,7 @@ const Create = () => {
                             </select>
                         </span>
                     </p>
-                    <p className="field create-section-form-fieldset-p-productType">
+                    <p className="field edit-section-form-fieldset-p-productType">
                         <label htmlFor="productType">Product type:</label>
                         <span className="input">
                             <select id="productType" name="productType">
@@ -88,7 +88,7 @@ const Create = () => {
                             </select>
                         </span>
                     </p>
-                    <p className="field create-section-form-fieldset-p-skinType">
+                    <p className="field edit-section-form-fieldset-p-skinType">
                         <label htmlFor="skinType">Skin type:</label>
                         <span className="input">
                             <select id="skinType" name="skinType">
@@ -98,11 +98,11 @@ const Create = () => {
                             </select>
                         </span>
                     </p>
-                    <input className={`button submit create-section-form-fieldset-button ${!isUploaded && 'disabled'}`} type="submit" disabled={!isUploaded} value="Add" />
+                    <input className={`button submit edit-section-form-fieldset-button ${!isUploaded && 'disabled'}`} type="submit" disabled={!isUploaded} value="Add" />
                 </fieldset>
             </form>
         </section>
     )
 };
 
-export default Create;
+export default Edit;

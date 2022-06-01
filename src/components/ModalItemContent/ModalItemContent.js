@@ -7,18 +7,12 @@ const ModalItemContent = (props) => {
 
     let [brand, careAbout, description, id, imageUrl, name, price, productType, skinType] = Object.values(props.item);
 
-        // if(brand) {
-        //     const brandName = brand?.slice(0,1);
-        //     console.log(brandName);
-        // }
-   
-
     return (
         <Modal
             {...props}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
-            centered            
+            centered
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter" className='modal-title-text'>
@@ -31,7 +25,7 @@ const ModalItemContent = (props) => {
                         <img src={`${imageUrl}`} />
                     </section>
                     <section className='modal-item-description'>
-                        <h4>{name}</h4>
+                        <h4 className='modal-item-description-name'>{name}</h4>
                         <p><span className='modal-item-description-text'>{description}</span></p>
                         <p><span className='modal-item-description-text'>Produced by {brand && brand.toUpperCase()}</span></p>
                         <p><span className='modal-item-description-text'>Useful for your {careAbout}</span></p>

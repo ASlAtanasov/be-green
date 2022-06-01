@@ -54,15 +54,7 @@ const Body = () => {
 
     useEffect(() => {
         try {
-            getAll('products', setProducts, setProductsToDisplay);
-
-            console.log('orderedProducts in Body useEffect: ' + orderedProducts);
-            
-            //let orderedProductsInLocalstorage = JSON.parse(localStorage.getItem('orderedProducts'));
-
-            // if (orderedProductsInLocalstorage) {
-            //     setOrderedProducts(orderedProductsInLocalstorage)
-            // }
+            getAll('products', setProducts, setProductsToDisplay);           
         } catch (error) {
             alert(error);
         }
@@ -152,7 +144,9 @@ const Body = () => {
                     <div className="main-header anim">Discover the products you need</div>
                     <div className='products-list'>
 
-                        {productsToDisplay.map((product) => (
+                        {productsToDisplay.map((product) => {
+                            console.log('Product in productsToDiplay: ' + JSON.stringify(product));
+                            return (
                             <ProductCard
                                 key={v4()}
                                 name={product.name}
@@ -164,7 +158,7 @@ const Body = () => {
                                 showModal={showModal}
                                 setShowModal={setShowModal}
                             />
-                        ))}
+                        )})}
 
                     </div>
                     <ModalItemContent className={`${showModal && 'modal-active'}`} show={showModal} item={itemModalContent} onHide={() => setShowModal(false)} />

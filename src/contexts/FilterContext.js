@@ -10,9 +10,9 @@ export const FilterContextProvider = ({ children }) => {
         <FilterContext.Provider value={{ filterCheckedValues, setFilterCheckedValues }}>
             {children}
         </FilterContext.Provider>
-    )
-}
+    );
+};
 
 export const useFilterContext = () => {
     return useContext(FilterContext);
-}
+};

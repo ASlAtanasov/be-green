@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { getAll } from '../../services/productService';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import { useAuthUserContext } from '../../contexts/AuthContext';
 import OrderedProductCard from '../OrderedProductCard';
 import { useOrderedProductsContext } from '../../contexts/OrderedProductsContext';
+import { totalPriceCalculation, saveNewOrder } from '../../services/productService';
+import { OrderStatus } from '../../constants';
 import './Cart.css';
 import { v4 } from 'uuid';
 
 const Cart = () => {
     const { user } = useAuthUserContext();
-    const { orderedProducts, setOrderedProducts } = useOrderedProductsContext();
+    const { orderedProducts, setOrderedProducts, totalPrice, setTotalPrice } = useOrderedProductsContext();
+    const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     try {
-    //        let orderedProductsInLocaStorage = localStorage.setItem('orderedProducts', JSON.stringify(orderedProducts));
-    //         if(orderedProductsInLocaStorage) {
-    //             setOrderedProducts(orderedProductsInLocaStorage);
-    //         }
-    //     } catch (error) {
-    //         alert(error);
-    //     }
-    // }, []);
+    useEffect(() => {
+        totalPriceCalculation(orderedProducts, setTotalPrice);
+    }, [orderedProducts]);
+
+    const onClickSaveNewOrderHandler = () => {
+        if(user) {
+            saveNewOrder(user, orderedProducts, setOrderedProducts, totalPrice, OrderStatus.new);
+        } else {
+            alert('You should sign in before sending an order!');
+            navigate('/login');
+        }
+    };
 
     return (
         <div className="Cart-container">
@@ -29,18 +34,19 @@ const Cart = () => {
                     <div className='ordered-products-list'>
                         <ul>
                             {orderedProducts?.map((orderedProduct) => {
-                                console.log(111, orderedProducts);
-                               return (<OrderedProductCard key={v4()} item={orderedProduct} />)
-                            })
-                            }
-
+                                return (<OrderedProductCard key={v4()} item={orderedProduct} />)
+                            })}
                         </ul>
-                        {orderedProducts.length > 0 || <h3 className='empty-order-list'>You haven't ordered anytheng yet!</h3>}
                     </div>
-                    {orderedProducts && <div className='ordered-products-total-price'>
-                            Total price: 
-                    </div>}
-                    <button>Buy</button>
+                    {orderedProducts.length > 0
+                        ? <>
+                            <div className='ordered-products-total-price'>
+                                Total price: {totalPrice} lv.
+                            </div>
+                            <button className='ordered-products-button-buy' onClick={onClickSaveNewOrderHandler}>Buy</button>
+                        </>
+                        : <h3 className='empty-order-list'>You haven't ordered anytheng yet!</h3>}
+
 
                 </div>
             </div>

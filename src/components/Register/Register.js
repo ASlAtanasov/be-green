@@ -14,7 +14,7 @@ const Register = () => {
     const registerSubmitHandler = async (e) => {
         e.preventDefault();
 
-        const { email, password, repeatPassword, firstName, lastName, country, city, address, postalCode } = Object.fromEntries(new FormData(e.currentTarget));
+        const { email, password, repeatPassword, firstName, lastName, phone, country, city, address, postalCode } = Object.fromEntries(new FormData(e.currentTarget));
 
         if(email == '' || password == '' || repeatPassword == '' || firstName == '' || lastName == '' || country == '' || city == '' ||
         address == '' || postalCode == '') {
@@ -43,7 +43,7 @@ const Register = () => {
         }
 
         try {
-           await register(email, password, firstName, lastName, country, city, address, postalCode, orderedProducts, navigate, setUser); 
+           await register(email, password, firstName, lastName, phone, country, city, address, postalCode, orderedProducts, navigate, setUser); 
         } catch (error) {            
             alert(`${error.code}: ${error.message}`);
         };

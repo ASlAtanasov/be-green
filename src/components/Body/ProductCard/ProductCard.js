@@ -23,9 +23,14 @@ const ProductCard = ({ name, description, imageUrl, price, item, setItem, showMo
 
     const onClickSetOrderedProductsHandler = async (e) => {
         e.preventDefault();
-        await setOrderedProducts([...orderedProducts, item]);
+        if(orderedProducts.every((product) => product.id !== item.id)) {
+            await setOrderedProducts([...orderedProducts, {...item, quantity: 1}]);
         
-        localStorage.setItem('orderedProducts', JSON.stringify([...orderedProducts, item]));
+            localStorage.setItem('orderedProducts', JSON.stringify([...orderedProducts, item]));
+        } else {
+            alert('You have already ordered this product');
+        }
+        
     }
 
     //let userInLocalStorage = localStorage.getItem('user');
@@ -48,7 +53,7 @@ const ProductCard = ({ name, description, imageUrl, price, item, setItem, showMo
 
                     {user && user.uid && user.uid === '2CLGcFqcCASXAdKXb0HHAz7neIj1'
                         ? <section className='admin-buttons'>
-                            <Button className='product-card-button-edit' variant="primary"><Link className='product-card-button-edit-link' to={'#'}>Edit</Link></Button>
+                            <Button className='product-card-button-edit' variant="primary"><Link className='product-card-button-edit-link' to={`products/${item.id}`}>Edit</Link></Button>
                             <Button className='product-card-button-delete' variant="primary"><Link className='product-card-button-delete-link' to={'#'}>Delete</Link></Button>
                         </section>
                         : ''}

@@ -14,9 +14,11 @@ import Body from './components/Body';
 import Create from './components/Create';
 import Cart from './components/Cart';
 import ErrorPage from './components/ErrorPage';
+import Edit from './components/Edit';
 import { FilterContextProvider } from './contexts/FilterContext';
 import { ModalContentContextProvider } from './contexts/ModalContentContext';
 import { OrderedProductsContextProvider } from './contexts/OrderedProductsContext';
+import Orders from './components/Orders';
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
                     <Route path='/body' element={<Body />} />
                     <Route path='/create' element={<Create />} />
                     <Route path='/cart' element={<Cart />} />
+                    <Route path='/orders' element={<Orders />} />
+                    <Route path='/edit' element={<Edit />} />
                     <Route path='*' element={<ErrorPage />} />
 
                   </Routes>

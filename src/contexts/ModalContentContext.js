@@ -5,14 +5,15 @@ const ModalContentContext = createContext();
 
 export const ModalContentContextProvider = ({ children }) => {    
     const [itemModalContent, setItemModalContent] = useState({});
+    const [showModal, setShowModal] = useState(false)
 
     return (
-        <ModalContentContext.Provider value={{ itemModalContent, setItemModalContent }}>
+        <ModalContentContext.Provider value={{ itemModalContent, setItemModalContent, showModal, setShowModal }}>
             {children}
         </ModalContentContext.Provider>
-    )
-}
+    );
+};
 
 export const useModalContentContext = () => {
     return useContext(ModalContentContext);
-}
+};

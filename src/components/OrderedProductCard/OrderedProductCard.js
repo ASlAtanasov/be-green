@@ -1,16 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useOrderedProductsContext } from '../../contexts/OrderedProductsContext';
 import './OrderedProductCard.css';
 
 const OrderedProductCard = (props) => {
-    const {orderedProducts, setOrderedProducts} = useOrderedProductsContext();
-    let [brand, careAbout, description, id, imageUrl, name, price, productType, skinType] = Object.values(props.item);
+    const { orderedProducts, setOrderedProducts } = useOrderedProductsContext();
+    let [brand, careAbout, description, id, imageUrl, name, price, productType, skinType, quantity] = Object.values(props.item);
+    let [quantityOrdered, setQuantityOrdered] = useState(1);
+    //console.log('quantityOrdered in OrderedCardProducts: ' + quantityOrdered);
+
+    // orderedProducts.map((product) => {
+    //     product.quantity = quantityOrdered;
+    //    console.log('product: ' + JSON.stringify(product));
+    // });
+
+
+    //console.log('orderedProducts in OrderedCardProducts: ' + JSON.stringify(orderedProducts));
+
 
     const onClickDeleteItemHandler = async () => {
         let filteredOrderedItems = orderedProducts.filter((product) => product.id !== id)
         await setOrderedProducts([...filteredOrderedItems])
         localStorage.setItem('orderedProducts', JSON.stringify([...filteredOrderedItems]));
+    }
+
+    const setItemQuantityHandler = async (e) => {
+       
+        if (e.target.validity.valid) {
+            let newOrderedProducts = orderedProducts.map((product) => {
+                if (product.id == e.target.dataset.id) {
+                    product = { ...product, quantity: e.target.value };
+                }
+                return product;
+            })
+            // e.target.defaultValue = e.target.value;
+            //setQuantityOrdered(e.target.value)
+            await setOrderedProducts([...newOrderedProducts]);
         }
+    };
 
 
     return (
@@ -27,7 +53,15 @@ const OrderedProductCard = (props) => {
                 </p>
                 <p className='ordered-product-data-quantity'>
                     <label htmlFor='quantity'>Quantity</label>
-                    <input type='number' id='quantity' name='quantity' className='ordered-product-data-quantity' defaultValue={'1'} />
+                    <input
+                        type='text'
+                        pattern='[0-9]'
+                        id='quantity'
+                        name='quantity'
+                        className='ordered-product-data-quantity'
+                        data-id={id}
+                        value={quantity}
+                        onInput={setItemQuantityHandler} />
                 </p>
                 <p className='ordered-product-data-button-close'>
                     <label htmlFor='remove'>Remove</label>

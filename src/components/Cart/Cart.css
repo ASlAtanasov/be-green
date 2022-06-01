@@ -1176,3 +1176,31 @@ h3.empty-order-list {
   margin: 20px auto;
   text-align: center;
 }
+
+.ordered-products-total-price {
+  margin: 20px 20px 20px 20px;
+  font-size: 22px;
+  color: black;
+  text-align: end;
+  font-weight: 600;
+}
+
+.ordered-products-button-buy {
+  background-color: rgb(68, 192, 68);
+  border: 1px solid rgb(68, 192, 68);
+  border-radius: 5px;
+  margin-right: 20px;
+  color: #fff;
+  width: 100px;
+  height: 46px;
+  font-size: 20px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px 10px;
+  font-weight: 400;
+  align-self: flex-end;
+}
+
+.ordered-products-button-buy:hover {
+background-color: rgba(165, 42, 42, 0.863);
+}

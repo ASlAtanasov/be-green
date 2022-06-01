@@ -1,0 +1,36 @@
+.modal-header {
+    background: #cbf8e5dc;
+}
+
+.modal-body-section {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+
+.modal-item-description-text {
+    color: black;
+    font-size: 22px;
+}
+
+section.modal-item-description>p:nth-child(1) {
+    text-indent: 30px;
+}
+
+.button-confirmation,
+.button-deny {
+    background: green;
+}
+
+.button-deny {
+    background: green;
+}
+
+.modal-active-confirmation {
+    /* backdrop-filter: blur(9px); */
+    backdrop-filter: contrast(90%)
+}

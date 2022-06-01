@@ -1,0 +1,91 @@
+.order-product {
+    border: 3px solid rgb(68, 192, 68);    
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: 0px 0px 50px 0px;
+    padding: 0px;
+    font-size: 22px;
+}
+
+.section-user {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0px 0px 20px 0px;    
+    padding: 20px;
+    font-size: 22px;
+    border-bottom: 1px solid rgb(68, 192, 68);
+}
+
+.order-user-data {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-user-data-name,
+.order-user-data-address,
+.order-user-data-phone {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    margin: 0px;
+    padding-left: 20px;
+}
+
+.order-user-data-name span,
+.order-user-data-address span,
+.order-user-data-phone span {
+    padding-left: 10px;
+}
+
+.order-buttons{
+    margin: 10px auto;
+}
+
+.order-buttons-sent,
+.order-buttons-received,
+.order-buttons-archive, 
+.order-buttons-delete {
+    background-color: rgb(68, 192, 68);
+    border: 1px solid rgb(68, 192, 68);
+    border-radius: 5px;
+    margin-right: 40px;
+    color: #fff;
+    width: 120px;
+    height: 46px;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 10px;
+    font-weight: 400;
+    align-self: flex-end;
+}
+
+.order-buttons-delete {
+    background-color: rgb(247, 68, 68);
+    border: 1px solid rgb(247, 68, 68);
+}
+
+.order-buttons-sent:hover,
+.order-buttons-received:hover,
+.order-buttons-archive:hover, 
+.order-buttons-delete:hover {
+    background-color: rgba(165, 42, 42, 0.863);
+}
+
+button.order-buttons-sent.disabled,
+button.order-buttons-sent.disabled:hover,
+button.order-buttons-received.disabled,
+button.order-buttons-received.disabled:hover,
+button.order-buttons-archive.disabled,
+button.order-buttons-archive.disabled:hover {
+    background: grey;
+    color: black;
+}
