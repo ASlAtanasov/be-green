@@ -65,6 +65,7 @@ const Orders = () => {
                             {filteredOrders?.map((order) => {
                                 return (<OrderCard
                                     key={v4()}
+                                    order={order}
                                     id={order.id}
                                     orderedProducts={order.orderedProducts}
                                     status={order.status}

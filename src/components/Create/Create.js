@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import './Create.css';
-import { uploadImage, createProduct } from "../../services/productService";
+import { uploadImage, createProduct } from '../../services/productService';
 
 const Create = () => {
     const [imageUrl, setImageUrl] = useState(null);
+    const [imageName, setImageName] = useState(null);
     let [isUploaded, setIsUploaded] = useState(false);
 
-    const createProductSubmitHandler = () => {       
-        createProduct(imageUrl, setIsUploaded, setImageUrl);
+    const createProductSubmitHandler = (e) => {
+        e.preventDefault();
+
+        const { name, description, price, brand, careAbout, productType, skinType } = Object.fromEntries(new FormData(e.currentTarget));
+        createProduct(imageUrl, setIsUploaded, setImageUrl, imageName, setImageName, name, description, price, brand, careAbout, productType, skinType);
+        e.currentTarget.reset();
     };
 
-    const uploadImageHandler = () => {
-        uploadImage(imageUrl, setImageUrl, setIsUploaded);
+    const uploadImageHandler = (e) => {
+        e.preventDefault();
+        uploadImage(imageUrl, setImageUrl, setImageName, setIsUploaded);
     };
 
     return (
@@ -38,8 +44,8 @@ const Create = () => {
                                 <input type="file" name="imageFile" id="imageFile" onChange={
                                     (e) => {
                                         setImageUrl(e.currentTarget.files[0])
-                                        console.log('ImageUrl is set')
-                                    }} />                               
+                                        console.log('ImageFile is set')
+                                    }} />
                                 {!imageUrl && <span></span>}
                                 {imageUrl && !isUploaded && <span className="image-choosen-file-text">{'Image file has been chosen!'}</span>}
                                 {imageUrl && isUploaded && <span className="image-choosen-file-text">{'Image file has been uploaded!'}</span>}

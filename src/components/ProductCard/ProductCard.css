@@ -6,6 +6,8 @@
 .product-card {
     width: 30%;
     margin-bottom: 20px;
+    margin-left: 22px;
+    flex-basis: 31%;
 }
 
 .product-card img {

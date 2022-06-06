@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useOrderedProductsContext } from '../../contexts/OrderedProductsContext';
 import BuyedProductCard from '../BuyedProductCard';
-import { updateOrderStatus, deleteItem, getAll } from '../../services/productService';
+import { updateOrderStatus, getAll } from '../../services/productService';
 import { OrderStatus } from '../../constants';
 import { v4 } from 'uuid';
 import './OrderCard.css';
@@ -10,13 +10,13 @@ import { useModalContentContext } from '../../contexts/ModalContentContext';
 
 const confirmation = {
     delete: 'Are you sure that you want to delete this order?'
-}
+};
 
 const OrderCard = (props) => {
-    const { setOrders, setFilteredOrders } = useOrderedProductsContext();
-    const {showModal, setShowModal} = useModalContentContext();
+    const { setOrders, setFilteredOrders, setOrderToDelete } = useOrderedProductsContext();
+    const {showModalConfirmation, setShowModalConfirmation} = useModalContentContext();
 
-    const { id, orderedProducts, status, totalPrice, user } = props;
+    const { id, status, order, user } = props;
    
     const onClickSentButtonHandler = async (e) => {
         e.preventDefault();
@@ -36,10 +36,11 @@ const OrderCard = (props) => {
         getAll('orders', setOrders, setFilteredOrders); 
     };
 
-    const onClickDeleteButtonHandler = (e) => {
+    const onClickDeleteButtonHandler = async (e) => {
         e.preventDefault();
-        setShowModal(true);
-    }
+        await setOrderToDelete(order);
+        setShowModalConfirmation(true);
+    };
 
     return (
         <li className='order-product'>
@@ -93,7 +94,7 @@ const OrderCard = (props) => {
                     onClick={onClickDeleteButtonHandler}
                >DELETE</button>
             </section>
-            <ModalConfirmation className={`${showModal && 'modal-active'}`} id={id} text={confirmation.delete} show={showModal} onHide={() => setShowModal(false)} />
+            <ModalConfirmation itemtodelete={'order'} className={`${setShowModalConfirmation && 'modal-active-confirmation'}`} id={id} text={confirmation.delete} show={showModalConfirmation} onHide={() => setShowModalConfirmation(false)} />
         </li>
     );
 };

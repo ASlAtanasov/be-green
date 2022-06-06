@@ -1,14 +1,17 @@
 import { database, storage } from '../firebase';
 import { set, ref as databaseRef, onValue, update, remove } from "firebase/database";
-import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref as storageRef, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { v4 } from 'uuid';
 
-export function writeProductData(name, description, imageUrl, price, brand, careAbout, productType, skinType) {
-    set(databaseRef(database, 'products/' + name), {
-        id: v4(),
+export function writeProductData(name, description, imageUrl, imageName, price, brand, careAbout, productType, skinType) {
+    const id = v4();
+
+    set(databaseRef(database, 'products/' + id), {
+        id,
         name,
         description,
         imageUrl,
+        imageName,
         price,
         brand,
         careAbout,
@@ -17,25 +20,33 @@ export function writeProductData(name, description, imageUrl, price, brand, care
     });
 };
 
-export const uploadImage = (imageUrl, setImageUrl, setIsUploaded) => (e) => {
-    e.preventDefault();
-
+export const uploadImage = (imageUrl, setImageUrl, setImageName, setIsUploaded) => {
     if (imageUrl == null) {
         return;
     };
 
-    const imageRef = storageRef(storage, `images/${imageUrl.name + v4()}`)
+    const imageId = v4();
+
+    const imageRef = storageRef(storage, `images/${imageId}`);
 
     uploadBytes(imageRef, imageUrl)
         .then((response) => {
             alert('image Uploaded');
 
             let metadata = Object.values(response);
+            console.log('metadata: ' + metadata);
+            console.log('metadata: ' + JSON.stringify(metadata));
 
             let imageName = metadata[0].name;
+            setImageName(imageName);
+
+            console.log('imageId from metadata: ' + JSON.stringify(imageId));
+            console.log('imageName from metadata: ' + JSON.stringify(imageName));
+
 
             getDownloadURL(storageRef(storage, `/images/${imageName}`))
                 .then((url) => {
+                    console.log('imageUrl in getDownloadUrl: ' + url);
                     setImageUrl(url);
                     setIsUploaded(true)
                 });
@@ -45,16 +56,12 @@ export const uploadImage = (imageUrl, setImageUrl, setIsUploaded) => (e) => {
         });
 };
 
-export const createProduct = (imageUrl, setIsUploaded, setImageUrl) => (e) => {
-    e.preventDefault();
-
-    const { name, description, price, brand, careAbout, productType, skinType } = Object.fromEntries(new FormData(e.currentTarget));
-
+export const createProduct = (imageUrl, setIsUploaded, setImageUrl, imageName, setImageName, name, description, price, brand, careAbout, productType, skinType) => {
     try {
-        writeProductData(name, description, imageUrl, price, brand, careAbout, productType, skinType);
+        writeProductData(name, description, imageUrl, imageName, price, brand, careAbout, productType, skinType);
         alert('Successful writing of product data');
 
-        e.currentTarget.reset();
+        setImageName(null);
         setImageUrl(null);
         setIsUploaded(false);
     } catch (error) {
@@ -95,6 +102,7 @@ export const filterItemsByCheckboxCriteria = async (items, filterCheckedValues, 
         await setProductsToContext([...items]);
     } else {
         filterCheckedValues.map((filterValue) => {
+            console.log(222, filterValue);
             let key = Object.keys(filterValue);
 
             items.filter((item) => {
@@ -168,9 +176,37 @@ export const updateOrderStatus = async (itemId, newStatus) => {
     });
 };
 
-export const deleteItemFromServer = async (itemId) => {
-    let response = await remove(databaseRef(database, 'orders/' + itemId));
-    console.log('response in deleteItem: ' + response);
-    console.log('response in deleteItem: ' + JSON.stringify(response));
-    return response;
+export const editProduct = async (itemId, editedName, editedDescription, editedPrice, editedBrand, editedCareAbout, editedProductType, editedSkinType, imageUrl) => {
+    try {
+        await update(databaseRef(database, 'products/' + itemId), {
+            ['name']: editedName,
+            ['description']: editedDescription,
+            ['imageUrl']: imageUrl,
+            ['price']: editedPrice,
+            ['brand']: editedBrand,
+            ['careAbout']: editedCareAbout,
+            ['productType']: editedProductType,
+            ['skinType']: editedSkinType
+        });
+
+        alert(`Product is edited successfully`);
+    } catch (error) {
+        alert(`${error.code}: ${error.message}`);
+    }
+};
+
+export const deleteItemFromServer = async (itemId, databaseReference, imageName, storageReference) => {
+    try {    
+        let responseFromDatabase = await remove(databaseRef(database, databaseReference + itemId)); 
+
+        if (imageName && storageReference) {
+            let responseFromStorage = await deleteObject(storageRef(storage, storageReference + imageName)); 
+
+            return [responseFromDatabase, responseFromStorage];
+        };
+        
+        return responseFromDatabase;
+    } catch (error) {
+        alert(`${error.code}: ${error.message}`);
+    }
 };

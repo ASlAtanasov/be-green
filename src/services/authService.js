@@ -5,9 +5,7 @@ import { set, ref as databaseRef, onValue } from "firebase/database";
 export const login = async (email, password, setUser, orderedProducts, navigate) => {
   try {
     const response = await signInWithEmailAndPassword(auth, email, password);
-
-    let userUid = JSON.stringify(response.user.uid)
-    
+      
     onValue(databaseRef(database, 'users/' + response.user.uid), (snapshot) => {
       const userData = snapshot.val();
       let userToSave = { ...userData, uid: response.user.uid, email: response.user.email, accessToken: response.user.accessToken }
@@ -16,7 +14,7 @@ export const login = async (email, password, setUser, orderedProducts, navigate)
 
       setUser(userToSave);
 
-      if (orderedProducts) {
+      if (orderedProducts.length > 0) {
         navigate('/cart')
       } else {
         navigate('/home');
@@ -31,7 +29,8 @@ export const logout = (setUser, navigate, initialState) => {
   signOut(auth)
     .then(() => {
       localStorage.removeItem('user');
-
+      localStorage.removeItem('orderedProducts');
+      alert('Successful');
       navigate('/');
       setUser(initialState);
     })

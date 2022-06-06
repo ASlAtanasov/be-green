@@ -1212,7 +1212,7 @@ div.side-menu>a.sidebar-link svg:nth-child(1) {
   width: 100%;
   margin: 40px auto;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   color: black;
   flex-wrap: wrap;
 }

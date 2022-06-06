@@ -8,6 +8,7 @@ export const OrderedProductsContextProvider = ({ children }) => {
     const [totalPrice, setTotalPrice] = useState('');
     const [orders, setOrders] = useState([]);
     const [filteredOrders, setFilteredOrders] = useState([]);
+    const [orderToDelete, setOrderToDelete] = useState({});
 
     return (
         <OrderedProductsContext.Provider value={{ 
@@ -18,7 +19,9 @@ export const OrderedProductsContextProvider = ({ children }) => {
             orders, 
             setOrders, 
             filteredOrders, 
-            setFilteredOrders }}>
+            setFilteredOrders,
+            orderToDelete,
+            setOrderToDelete }}>
             {children}
         </OrderedProductsContext.Provider>
     );

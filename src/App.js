@@ -42,7 +42,7 @@ function App() {
                     <Route path='/create' element={<Create />} />
                     <Route path='/cart' element={<Cart />} />
                     <Route path='/orders' element={<Orders />} />
-                    <Route path='/edit' element={<Edit />} />
+                    <Route path='body/products/edit/:id' element={<Edit />} />
                     <Route path='*' element={<ErrorPage />} />
 
                   </Routes>

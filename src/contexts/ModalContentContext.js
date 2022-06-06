@@ -3,12 +3,13 @@ import { createContext, useContext, useState } from "react";
 
 const ModalContentContext = createContext();
 
-export const ModalContentContextProvider = ({ children }) => {    
+export const ModalContentContextProvider = ({ children }) => {
     const [itemModalContent, setItemModalContent] = useState({});
-    const [showModal, setShowModal] = useState(false)
+    const [showModalItemContent, setShowModalItemContent] = useState(false);
+    const [showModalConfirmation, setShowModalConfirmation] = useState(false);
 
     return (
-        <ModalContentContext.Provider value={{ itemModalContent, setItemModalContent, showModal, setShowModal }}>
+        <ModalContentContext.Provider value={{ itemModalContent, setItemModalContent, showModalItemContent, setShowModalItemContent, showModalConfirmation, setShowModalConfirmation }}>
             {children}
         </ModalContentContext.Provider>
     );

@@ -4,7 +4,7 @@ import './OrderedProductCard.css';
 
 const OrderedProductCard = (props) => {
     const { orderedProducts, setOrderedProducts } = useOrderedProductsContext();
-    let [brand, careAbout, description, id, imageUrl, name, price, productType, skinType, quantity] = Object.values(props.item);
+    let [brand, careAbout, description, id, imageName, imageUrl, name, price, productType, skinType, quantity] = Object.values(props.item);
     let [quantityOrdered, setQuantityOrdered] = useState(1);
     //console.log('quantityOrdered in OrderedCardProducts: ' + quantityOrdered);
 

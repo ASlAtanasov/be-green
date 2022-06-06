@@ -5,7 +5,7 @@ import "./ModalItemContent.css";
 
 const ModalItemContent = (props) => {
 
-    let [brand, careAbout, description, id, imageUrl, name, price, productType, skinType] = Object.values(props.item);
+    let [brand, careAbout, description, id, imageName, imageUrl, name, price, productType, skinType] = Object.values(props.item);
 
     return (
         <Modal

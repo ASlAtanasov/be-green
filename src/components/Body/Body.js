@@ -6,7 +6,7 @@ import { useAuthUserContext } from '../../contexts/AuthContext';
 import { faFaceSmile, faHandSparkles, faBarcode, faStaffAesculapius, faHandHoldingHeart, faDroplet, faPersonHalfDress, faTrademark } from '@fortawesome/free-solid-svg-icons';
 import { useProductsContext } from '../../contexts/ProductsContext';
 import { v4 } from 'uuid';
-import ProductCard from './ProductCard';
+import ProductCard from '../ProductCard';
 import { Form, FormControl, Button } from 'react-bootstrap';
 
 import { getAll, filterItemsByCheckboxCriteria, searchItems } from '../../services/productService';
@@ -14,7 +14,6 @@ import { useFilterContext } from '../../contexts/FilterContext';
 import { useModalContentContext } from '../../contexts/ModalContentContext';
 import ModalItemContent from '../ModalItemContent/ModalItemContent';
 import { transformOptionValue } from '../../services/commonServices';
-import { useOrderedProductsContext } from '../../contexts/OrderedProductsContext';
 
 const BodyCareOptions = [
     {
@@ -43,18 +42,17 @@ const SkinTypeOptions = ['Dry', 'Moist', 'Normal'];
 const Body = () => {
     const { user } = useAuthUserContext();
     const { products, setProducts, productsToDisplay, setProductsToDisplay } = useProductsContext();
-    let { filterCheckedValues, setFilterCheckedValues } = useFilterContext();
-    const { itemModalContent, setItemModalContent } = useModalContentContext();
+    let { filterCheckedValues } = useFilterContext();
+    const { itemModalContent, setItemModalContent, showModalItemContent, setShowModalItemContent } = useModalContentContext();
     const [searchedValue, setSearchedValue] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [filterValue, setFilterValue] = useState([]);
-    const {orderedProducts, setOrderedProducts} = useOrderedProductsContext();
+    
 
-    const productsItems = [];
 
     useEffect(() => {
         try {
-            getAll('products', setProducts, setProductsToDisplay);           
+            getAll('products', setProducts, setProductsToDisplay);
         } catch (error) {
             alert(error);
         }
@@ -66,8 +64,6 @@ const Body = () => {
 
     const onChangeSearchInputHandler = (e) => {
         e.preventDefault();
-        console.log('searched value: ' + e.target.value);
-        console.log(typeof e.target.value);
         setSearchedValue(e.target.value);
     }
 
@@ -78,11 +74,8 @@ const Body = () => {
 
     const onClickBodyCareHandler = (opt) => async (e) => {
         e.preventDefault();
-        console.log('option received: ' + opt.title);
 
         const [option, label] = transformOptionValue(opt.title, 'careAbout');
-        console.log('label: ' + label);
-        console.log('option: ' + option);
 
         setFilterValue([{ [label]: option }])
     }
@@ -145,23 +138,19 @@ const Body = () => {
                     <div className='products-list'>
 
                         {productsToDisplay.map((product) => {
-                            console.log('Product in productsToDiplay: ' + JSON.stringify(product));
                             return (
-                            <ProductCard
-                                key={v4()}
-                                name={product.name}
-                                description={product.description}
-                                imageUrl={product.imageUrl}
-                                price={product.price}
-                                item={product}
-                                setItem={setItemModalContent}
-                                showModal={showModal}
-                                setShowModal={setShowModal}
-                            />
-                        )})}
+                                <ProductCard
+                                    key={v4()}
+                                    item={product}
+                                    setItem={setItemModalContent}
+                                    setShowModalItemContent={setShowModalItemContent}
+                                    setShowModalConfirmation={setShowModalItemContent}
+                                />
+                            )
+                        })}
 
                     </div>
-                    <ModalItemContent className={`${showModal && 'modal-active'}`} show={showModal} item={itemModalContent} onHide={() => setShowModal(false)} />
+                    <ModalItemContent className={`${showModal && 'modal-active'}`} show={showModalItemContent} item={itemModalContent} onHide={() => setShowModalItemContent(false)} />
                 </div>
             </div>
         </div>

@@ -19,22 +19,6 @@ const Header = () => {
     const { products, setProducts, setProductsToDisplay } = useProductsContext();
     const { orderedProducts, setOrderedProducts } = useOrderedProductsContext();
 
-    //const navigate = useNavigate()
-    // const logoutHandler = async () => {
-    //     try {
-    //         await signOutPage();
-    //         localStorage.removeItem('user');
-    //          logout();
-    //         navigate('/home');
-    //         alert('You signed out successfully')
-    //     } catch (error) {
-    //         alert(error.message);
-    //     }
-    // };
-    let numberOfOrderedProducts = 0;
-
-    //console.log("orderedProducts in Header: " + orderedProducts);
-
     useEffect(() => {
         let currentUser = JSON.parse(localStorage.getItem('user'));
         let orderedProductsInLocalstorage = JSON.parse(localStorage.getItem('orderedProducts'));
@@ -56,9 +40,9 @@ const Header = () => {
                   </>
                 : ''}
             <Link to="/">Home</Link>
-            <Link to="/body">Body</Link>
-            <Link to="/foods">Foods</Link>
-            <Link to="/nature">Nature</Link>
+            <Link to="/body" reloadDocument={true}>Body</Link>
+            <Link to="/foods" reloadDocument={true}>Foods</Link>
+            <Link to="/nature" reloadDocument={true}>Nature</Link>
             <Link to="/logout">Logout</Link>
         </>
     );
@@ -66,9 +50,9 @@ const Header = () => {
     const guest = (
         <>
             <Link to="/">Home</Link>
-            <Link to="/body">Body</Link>
-            <Link to="/foods">Foods</Link>
-            <Link to="/nature">Nature</Link>
+            <Link to="/body" reloadDocument={true}>Body</Link>
+            <Link to="/foods" reloadDocument={true}>Foods</Link>
+            <Link to="/nature" reloadDocument={true}>Nature</Link>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
         </>
