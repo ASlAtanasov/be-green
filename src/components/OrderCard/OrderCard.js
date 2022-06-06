@@ -14,26 +14,26 @@ const confirmation = {
 
 const OrderCard = (props) => {
     const { setOrders, setFilteredOrders, setOrderToDelete } = useOrderedProductsContext();
-    const {showModalConfirmation, setShowModalConfirmation} = useModalContentContext();
+    const { showModalConfirmation, setShowModalConfirmation } = useModalContentContext();
 
     const { id, status, order, user } = props;
-   
+
     const onClickSentButtonHandler = async (e) => {
         e.preventDefault();
-        await updateOrderStatus(id, OrderStatus.sent);  
-        getAll('orders', setOrders, setFilteredOrders);          
+        await updateOrderStatus(id, OrderStatus.sent);
+        getAll('orders', setOrders, setFilteredOrders);
     };
 
     const onClickReceivedButtonHandler = async (e) => {
         e.preventDefault();
-        await updateOrderStatus(id, OrderStatus.received);   
-        getAll('orders', setOrders, setFilteredOrders); 
+        await updateOrderStatus(id, OrderStatus.received);
+        getAll('orders', setOrders, setFilteredOrders);
     };
 
     const onClickArchiveButtonHandler = async (e) => {
         e.preventDefault();
-        await updateOrderStatus(id, OrderStatus.archived);     
-        getAll('orders', setOrders, setFilteredOrders); 
+        await updateOrderStatus(id, OrderStatus.archived);
+        getAll('orders', setOrders, setFilteredOrders);
     };
 
     const onClickDeleteButtonHandler = async (e) => {
@@ -42,7 +42,7 @@ const OrderCard = (props) => {
         setShowModalConfirmation(true);
     };
 
-    return (
+    return (<>
         <li className='order-product'>
             <section className='section-user'>
                 <article className='order-user-data'>
@@ -87,15 +87,16 @@ const OrderCard = (props) => {
                     className={`order-buttons-archive ${(props.status !== 'new' && props.status !== 'sent' && props.status !== 'received') && 'disabled'}`}
                     disabled={props.status != 'new' && props.status != 'sent' && props.status != 'received'}
                     onClick={onClickArchiveButtonHandler}
-               >ARCHIVE</button>
-               <button
+                >ARCHIVE</button>
+                <button
                     type='submit'
-                    className='order-buttons-delete'                    
+                    className='order-buttons-delete'
                     onClick={onClickDeleteButtonHandler}
-               >DELETE</button>
+                >DELETE</button>
             </section>
-            <ModalConfirmation itemtodelete={'order'} className={`${setShowModalConfirmation && 'modal-active-confirmation'}`} id={id} text={confirmation.delete} show={showModalConfirmation} onHide={() => setShowModalConfirmation(false)} />
         </li>
+        <ModalConfirmation itemtodelete={'order'} className={`${setShowModalConfirmation && 'modal-active-confirmation'}`} id={id} text={confirmation.delete} show={showModalConfirmation} onHide={() => setShowModalConfirmation(false)} />
+    </>
     );
 };
 

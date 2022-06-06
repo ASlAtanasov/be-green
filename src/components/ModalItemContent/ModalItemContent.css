@@ -42,6 +42,6 @@ section.modal-item-description > p:nth-child(1) {
     text-indent: 30px;
 }
 
-.modal-active {  
+/* .modal-active {  
   backdrop-filter: contrast(70%)
-}  
+}   */

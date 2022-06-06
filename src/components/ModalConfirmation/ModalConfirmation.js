@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
+import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { string, object, arrayOf, func } from 'prop-types';
-import { deleteItemFromServer, getAll } from '../../services/productService';
+import { string } from 'prop-types';
+import { deleteItemFromServer } from '../../services/productService';
 import "./ModalConfirmation.css";
 import { useModalContentContext } from '../../contexts/ModalContentContext';
 import { useOrderedProductsContext } from '../../contexts/OrderedProductsContext';
@@ -44,6 +43,7 @@ const ModalConfirmation = (props) => {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            dialogClassName={'modal-active-confirmation'}
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter" className='modal-title-text'>
@@ -64,12 +64,11 @@ const ModalConfirmation = (props) => {
 }
 
 ModalConfirmation.propTypes = {
-    item: string,
+    itemtodelete: string.isRequired,
     text: string,
 };
 
-ModalConfirmation.defaultProps = {
-    id: null,
+ModalConfirmation.defaultProps = {   
     text: null,
 };
 

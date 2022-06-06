@@ -140,7 +140,7 @@
 }
 
 .create-section-form-fieldset-p-productType label {
-    margin-right: 20px;
+    margin-right: 10px;
     font-size: 18px;
     color: black;
     width: 110px;
@@ -151,6 +151,26 @@
 
 }
 .create-section-form-fieldset-p-productType select {
+    width: 100%;
+ }
+
+ .create-section-form-fieldset-p-category {
+    margin: 20px;
+    display: flex;
+}
+
+.create-section-form-fieldset-p-category label {
+    margin-right: 10px;
+    font-size: 18px;
+    color: black;
+    width: 110px;
+}
+
+.create-section-form-fieldset-p-category span {
+   flex-grow: 1;
+
+}
+.create-section-form-fieldset-p-category select {
     width: 100%;
  }
 

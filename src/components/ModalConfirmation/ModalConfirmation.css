@@ -26,11 +26,13 @@ section.modal-item-description>p:nth-child(1) {
     background: green;
 }
 
-.button-deny {
-    background: green;
+.button-confirmation:hover,
+.button-deny:hover {
+    background: rgb(165, 42, 42, 0.863);
 }
 
-.modal-active-confirmation {
-    /* backdrop-filter: blur(9px); */
-    backdrop-filter: contrast(90%)
+.modal-backdrop {
+    background: none;
+    backdrop-filter: contrast(50%);
 }
+
